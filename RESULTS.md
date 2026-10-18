@@ -50,4 +50,23 @@
 - 격리 PostgreSQL에 기본값 컬럼을 추가하기 전후 기존 1,028행의 수와 내용 해시가 같았다. 실제 운영 데이터베이스 이전 검증이 아니다. [원시 결과](evidence/migration-23d79839e9c2.json)
 - 정상 종료 중 진행 요청 1건의 응답과 재시작 후 데이터 보존을 확인하고, 두 인스턴스의 health·JVM·연결 풀 지표를 스냅샷으로 확인했다. 장기간 관측이나 운영 SLO 검증은 아니다. [복구 결과](evidence/inventory-26d493b7f214.json), [지표 스냅샷](evidence/ops-02f0b9fe622e.json)
 
-반품·역분개·tenant 격리, 실제 매출·채권 보고서, 실제 외부 ERP, 전체 writer의 잠금 통합은 구현 또는 검증 범위에 없다.
+위 1~5절은 기존 PostgreSQL 경로의 결과다. 당시 코드 식별자는 각 원시 결과에 남아 있으며, 예를 들어 재고 writer의 당시 소스는 커밋 `22495f3`에 해당한다. 이후 Oracle 프로파일 분리를 위해 현재 소스가 변경됐으므로 당시 결과를 현재 소스의 재측정 결과로 취급하지 않는다.
+
+## 6. Oracle 출고·반품과 접근 경계
+
+2026-10-18 로컬 Oracle Free 격리 스키마에서 Java 서비스·MyBatis·DB를 함께 실행한 테스트다. 100개 동시 출고 요청과 최초 재고 60개 조건에서 60건이 확정되고 40건이 재고 부족으로 거절됐다. 같은 요청 키의 동시 요청 40건은 전표 1건으로 귀결됐다. 출고 3개에 대한 동시 부분 반품 20건은 3건 확정, 17건 거절됐고, 재고와 단순 매출·채권을 확인했다. 감사 기록 직후 실패 주입 시 업무·수불·분개·outbox가 롤백되고 재시도되는 것도 확인했다. 해당 조건에서의 검증이지 모든 입력이나 우회 writer에 대한 보증이 아니다. [테스트 코드](src/test/java/com/inventory/oracle/OraclePostingIntegrationTest.java).
+
+별도 빈 스키마에서 두 작업자의 잠금, 인메모리 모의 수신자의 응답 유실 후 재시도, 오래된 lease 차단, 실패 한도 및 수동 재처리를 확인했다. 인증된 출고와 보고서 연결 및 역할별 거절도 실제 Oracle을 연결한 Spring 테스트로 확인했다. 별도 종단 간 테스트에서는 실제 Oracle 출고와 outbox를 HTTP 모의 수신자에 전달한 뒤 이벤트별 대사 일치를 확인했다. 종단 간 테스트의 선택 SQL은 해당 이벤트에 한정되므로 운영 코드의 전체 대기열 선택이나 스케줄러 검증은 아니다. [outbox 테스트](src/test/java/com/inventory/oracle/OracleOutboxIntegrationTest.java), [API 테스트](src/test/java/com/inventory/oracle/OracleSpringApiIntegrationTest.java), [종단 간 테스트](src/test/java/com/inventory/oracle/OraclePostingHttpEndToEndTest.java). 장애 복구 시간 분포와 실제 외부 ERP 신뢰성은 측정하지 않았다.
+
+## 7. Oracle 수불 조회 접근 경로 비교
+
+동일한 Oracle Free 인스턴스에서 100개 SKU에 생성한 수불 20,000행 중 한 SKU의 200행을 집계했다. FULL과 INDEX 힌트로 접근 경로를 강제한 두 SQL을 번갈아 실행해 같은 합계 999와 행 수를 확인했다. 각 경로 warm-up 20회, 측정 3회차 × 100회, 총 300개 표본의 합산 p50/p95다.
+
+| 측정값 | 전체 테이블 접근 강제 | 인덱스 접근 강제 | 변화 |
+| --- | ---: | ---: | ---: |
+| p50 | 1.550ms | 0.434ms | 72.0% 감소 |
+| p95 | 1.956ms | 0.732ms | 62.6% 감소 |
+
+JDBC 왕복을 포함한 로컬 synthetic 결과다. 실행계획은 `EXPLAIN PLAN`의 추정값이며 실제 실행 커서나 기본 옵티마이저 선택을 확인한 것은 아니다. 캐시·다른 부하가 통제되지 않았고 다른 DB와의 비교도 아니다. [600개 표본과 환경·SQL 원시 결과](evidence/oracle-query-257de062-07d6-42f4-8d6f-494f043ed366.json).
+
+전체 writer 통합, tenant 격리, 실제 외부 ERP 연동, 완전한 회계 및 운영 보안·성능은 구현 또는 검증 범위에 없다.

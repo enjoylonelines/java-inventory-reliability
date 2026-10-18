@@ -14,12 +14,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.support.TransactionTemplate;
 
 @Service
+@Profile("!oracle")
 public class InventoryService {
     private static final org.slf4j.Logger LOG = org.slf4j.LoggerFactory.getLogger(InventoryService.class);
     private final JdbcTemplate db;
