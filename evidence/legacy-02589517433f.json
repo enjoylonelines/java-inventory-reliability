@@ -1,0 +1,31 @@
+{
+  "run_id": "legacy-02589517433f",
+  "timestamp_utc": "2026-10-18T11:38:10.789576+00:00",
+  "scope": "baseline inventory writer on minimal synthetic PostgreSQL schema; not production schema or authentication",
+  "rpc_source": "baseline_inventory_writer.sql",
+  "rpc_sha256": "53299b3030a06ad3857b83ef0dcac7ae9908d83b9068a2484ec08467ac996cc3",
+  "legacy_receipt": {
+    "success": true,
+    "transaction_id": "efadb15f-1683-4c0c-8799-1769c5b3bb13"
+  },
+  "stock_after_legacy_in": 8,
+  "java_out_status": 200,
+  "java_out_receipt": {
+    "transaction_id": "ea37d129-a12d-4724-8be5-11fe161f237a",
+    "success": true
+  },
+  "replay_receipt": {
+    "transaction_id": "ea37d129-a12d-4724-8be5-11fe161f237a",
+    "success": true
+  },
+  "stock_after_java_out_and_replay": 5,
+  "rows_after_java_out_and_replay": 2,
+  "remote_applications_after_replay": 1,
+  "injected_after_canonical_writer_status": 502,
+  "stock_after_injected_rollback": 5,
+  "rows_after_injected_rollback": 2,
+  "inv_and_outbox_rows_after_rollback": 0,
+  "retry_status": 200,
+  "stock_after_retry": 12,
+  "rows_after_retry": 3
+}

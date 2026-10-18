@@ -1,0 +1,21 @@
+{
+  "run_id": "migration-23d79839e9c2",
+  "timestamp_utc": "2026-10-18T11:39:04.582941+00:00",
+  "scope": "isolated demo PostgreSQL table, not a production database migration",
+  "before": {
+    "rows": 1028,
+    "content_hash": "4dff37d5e0ecae241481c78ec4aaadb1"
+  },
+  "after": {
+    "rows": 1028,
+    "content_hash": "4dff37d5e0ecae241481c78ec4aaadb1"
+  },
+  "old_rows_preserved": true,
+  "transactional_ddl_rollback_probe_absent": true,
+  "old_insert_status": 200,
+  "old_insert_response": {
+    "success": true,
+    "transaction_id": "605e2535-7421-48f6-8142-755832d06138"
+  },
+  "new_column_default": "legacy"
+}

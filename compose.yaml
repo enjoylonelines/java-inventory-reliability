@@ -1,0 +1,70 @@
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: demo
+      POSTGRES_PASSWORD: demo-only-password
+      POSTGRES_DB: inventory_dev
+    volumes:
+      - demo-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U demo -d inventory_dev"]
+      interval: 2s
+      timeout: 2s
+      retries: 30
+  mock-erp:
+    image: python:3.12-slim
+    command: ["python", "/internal/mock_erp.py"]
+    volumes:
+      - ./mock_erp.py:/internal/mock_erp.py:ro
+      - mock-db:/data
+    ports:
+      - "127.0.0.1:18185:8080"
+  app:
+    build: .
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/inventory_dev
+      SPRING_DATASOURCE_USERNAME: demo
+      SPRING_DATASOURCE_PASSWORD: demo-only-password
+      MOCK_ERP_URL: http://mock-erp:8080
+    depends_on:
+      db:
+        condition: service_healthy
+      mock-erp:
+        condition: service_started
+    ports:
+      - "127.0.0.1:18184:8080"
+  app2:
+    profiles: ["scale"]
+    image: inventory-reliability-app:latest
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/inventory_dev
+      SPRING_DATASOURCE_USERNAME: demo
+      SPRING_DATASOURCE_PASSWORD: demo-only-password
+      MOCK_ERP_URL: http://mock-erp:8080
+    depends_on:
+      db:
+        condition: service_healthy
+      mock-erp:
+        condition: service_started
+    ports:
+      - "127.0.0.1:18186:8080"
+  proxy-one:
+    profiles: ["scale"]
+    image: nginx:1.27-alpine
+    volumes:
+      - ./nginx-one.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "127.0.0.1:18187:8080"
+    depends_on: [app]
+  proxy-two:
+    profiles: ["scale"]
+    image: nginx:1.27-alpine
+    volumes:
+      - ./nginx-two.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "127.0.0.1:18188:8080"
+    depends_on: [app, app2]
+volumes:
+  demo-db:
+  mock-db:

@@ -1,0 +1,3663 @@
+{
+  "run_id": "mapping-8df6be476113",
+  "timestamp_utc": "2026-10-18T11:38:54.543271+00:00",
+  "scope": "local synthetic mapping and catalogue, not an actual ERP integration",
+  "workload": {
+    "rounds": 3,
+    "inputs_per_arm": 60,
+    "valid": 30,
+    "invalid": {
+      "missing_sku": 10,
+      "inactive_partner": 10,
+      "unknown_external_sku": 10
+    },
+    "before": "mapping preflight disabled",
+    "after": "mapping preflight enabled"
+  },
+  "rounds": [
+    {
+      "baseline": {
+        "summary": {
+          "valid_inputs": 30,
+          "invalid_inputs": 30,
+          "valid_accepted": 30,
+          "invalid_blocked_422": 0,
+          "invalid_local_rows": 30,
+          "invalid_outbox_rows": 0,
+          "invalid_external_applications": 30,
+          "blocked_by_fixture": {},
+          "statuses": {
+            "200": 60
+          }
+        },
+        "requests": [
+          {
+            "key": "mapping-8df6be476113-r0-baseline-0",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "fc27d40c-c430-440c-a6b5-489147240724"
+            },
+            "latency_ms": 78.121
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-1",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "6acc225c-860c-457a-929b-7ca3b0791e1d"
+            },
+            "latency_ms": 8.087
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-2",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "5996ac6a-a3a2-4d6a-aa5f-a8d83d49e502"
+            },
+            "latency_ms": 9.06
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-3",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "b6341870-f38b-494c-bb8f-9308cb47475f"
+            },
+            "latency_ms": 8.555
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-4",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "7a1d5e89-7381-437a-9e19-332e36ed8471"
+            },
+            "latency_ms": 8.16
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-5",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "03d397ba-b21f-437a-b7ec-57c41a25456e"
+            },
+            "latency_ms": 7.207
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-6",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "5c88b959-d7f6-4c7d-b3b6-efccd9caad4d"
+            },
+            "latency_ms": 6.811
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-7",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "1e7cb00b-b8a2-47ba-925e-b1291f8322f7"
+            },
+            "latency_ms": 7.827
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-8",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "7b980eb0-2a23-46e8-af82-3b3fdd6da3d6"
+            },
+            "latency_ms": 7.649
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-9",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "f64723b2-9b35-4737-8bb8-1c98c2e41149"
+            },
+            "latency_ms": 6.332
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-10",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "e22cd1b5-b833-4d56-a663-0fbebfd24278"
+            },
+            "latency_ms": 6.938
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-11",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "535f7080-b145-46fb-8401-3adf981c3edc"
+            },
+            "latency_ms": 6.773
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-12",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "a5c54e43-49dc-4bc0-900d-29201e53c472"
+            },
+            "latency_ms": 7.02
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-13",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "2039762e-374f-4313-a17c-f47dcbf1a466"
+            },
+            "latency_ms": 7.131
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-14",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "5a7b5cda-2964-4aa7-8d1a-cc49a00a3e6c"
+            },
+            "latency_ms": 6.437
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-15",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "5497e66f-234d-4210-a901-bb06c55ed2b3"
+            },
+            "latency_ms": 6.767
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-16",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "dec5f9ea-e55b-4e89-9697-ea8bd1b615a1"
+            },
+            "latency_ms": 6.886
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-17",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "1b890dd7-7b02-4dfa-bd72-2f1361051d16"
+            },
+            "latency_ms": 7.369
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-18",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "16642c3c-db2c-4866-b30e-0380f42e789e"
+            },
+            "latency_ms": 6.521
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-19",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "1845a054-a008-4e87-b5f3-c612d315885d"
+            },
+            "latency_ms": 5.791
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-20",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "2be57876-488d-40cf-89d6-6ca0cee5bebc"
+            },
+            "latency_ms": 7.394
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-21",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "78f85735-379f-4ee1-8da6-8302d9593683"
+            },
+            "latency_ms": 6.708
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-22",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "e35c8074-ef30-403f-9d9e-9906c451f5a6"
+            },
+            "latency_ms": 6.777
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-23",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "98e71f2f-cf96-427b-93b9-ae388a3dedfa"
+            },
+            "latency_ms": 7.249
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-24",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "e2ae9ba1-796b-446e-8b1d-02237d532e11"
+            },
+            "latency_ms": 5.863
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-25",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "e2a800e3-c365-4b1b-887d-2dcda9d37575"
+            },
+            "latency_ms": 6.275
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-26",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "575172e1-7d4a-483f-ba9f-cbe9e6521b20"
+            },
+            "latency_ms": 6.382
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-27",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "15e16b82-4f88-4614-94c4-8126a103aac8"
+            },
+            "latency_ms": 6.41
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-28",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "fe524862-137f-4977-930a-d415a8c4cf87"
+            },
+            "latency_ms": 6.902
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-29",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "59ce7d46-2ca1-4f57-b54f-fda31fef1bf2"
+            },
+            "latency_ms": 5.445
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-30",
+            "fixture": "missing_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "8e3261d3-474a-4284-aef5-8145090992a6"
+            },
+            "latency_ms": 6.241
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-31",
+            "fixture": "missing_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "c9ee14e4-0ebe-4e03-8c24-35120776f57d"
+            },
+            "latency_ms": 5.853
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-32",
+            "fixture": "missing_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "7524d451-8803-4007-ba00-a1455ea11559"
+            },
+            "latency_ms": 6.734
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-33",
+            "fixture": "missing_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "5183d170-39ed-43ad-9a07-319cf4dedf33"
+            },
+            "latency_ms": 6.791
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-34",
+            "fixture": "missing_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "2c6bfbf3-1bef-4c05-bce8-ae495e934e74"
+            },
+            "latency_ms": 6.229
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-35",
+            "fixture": "missing_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "107e188a-2f58-4916-af10-ad37ebde0a57"
+            },
+            "latency_ms": 6.271
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-36",
+            "fixture": "missing_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "5428092a-49d8-4094-893d-3b68efbe575e"
+            },
+            "latency_ms": 6.602
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-37",
+            "fixture": "missing_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "9fb9ef0a-6417-421d-b169-4d6df4fb4b3f"
+            },
+            "latency_ms": 6.573
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-38",
+            "fixture": "missing_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "8f08b177-8e8c-4f6b-aade-50cfdc39737b"
+            },
+            "latency_ms": 11.641
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-39",
+            "fixture": "missing_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "50ff8cba-d0d5-4498-98d0-16daea991d11"
+            },
+            "latency_ms": 9.572
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-40",
+            "fixture": "inactive_partner",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "9dd1774f-6613-4602-b83a-f2fdb09f0a55"
+            },
+            "latency_ms": 7.035
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-41",
+            "fixture": "inactive_partner",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "d1626cf2-8716-4685-b51a-d4d2d2224afa"
+            },
+            "latency_ms": 7.123
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-42",
+            "fixture": "inactive_partner",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "0b6b86d4-6df5-41b0-9dc3-a2b8a23ff1ca"
+            },
+            "latency_ms": 7.219
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-43",
+            "fixture": "inactive_partner",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "eb8cdfbd-4987-4475-9a29-5725d1f78796"
+            },
+            "latency_ms": 7.221
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-44",
+            "fixture": "inactive_partner",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "2f1f358f-3932-489c-844f-ee14ff0214f4"
+            },
+            "latency_ms": 6.397
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-45",
+            "fixture": "inactive_partner",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "f694046c-4240-473c-9f47-0e11cbc2424b"
+            },
+            "latency_ms": 6.831
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-46",
+            "fixture": "inactive_partner",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "aabb8da2-4f9c-4519-97a0-ca5536c6a5b9"
+            },
+            "latency_ms": 6.931
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-47",
+            "fixture": "inactive_partner",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "17fc1f30-6157-4209-9567-041884cf10cd"
+            },
+            "latency_ms": 8.807
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-48",
+            "fixture": "inactive_partner",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "9e6be5c7-8de5-4fb4-ba4c-3ef2eb245af2"
+            },
+            "latency_ms": 6.362
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-49",
+            "fixture": "inactive_partner",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "614cd4fe-f572-4e36-9a75-4f3b3400fa5c"
+            },
+            "latency_ms": 7.125
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-50",
+            "fixture": "unknown_external_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "df3613b6-5457-4790-8e65-e217d80d834b"
+            },
+            "latency_ms": 7.003
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-51",
+            "fixture": "unknown_external_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "6f30e9ca-bb6d-4cec-835e-2b81fbc9f500"
+            },
+            "latency_ms": 7.584
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-52",
+            "fixture": "unknown_external_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "99cadcaf-d079-4655-bce5-f672e64456b3"
+            },
+            "latency_ms": 7.21
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-53",
+            "fixture": "unknown_external_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "2ae3e1af-af2b-4d35-be89-1710d35bb992"
+            },
+            "latency_ms": 7.161
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-54",
+            "fixture": "unknown_external_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "c8c5ba90-44b0-4c54-bb06-f4f695c6a963"
+            },
+            "latency_ms": 7.622
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-55",
+            "fixture": "unknown_external_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "1bbd1d1a-2133-4ed3-b9b7-f6388a2e7229"
+            },
+            "latency_ms": 7.353
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-56",
+            "fixture": "unknown_external_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "882a274c-a3f5-49ad-bf6e-5e0fedbc411d"
+            },
+            "latency_ms": 6.618
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-57",
+            "fixture": "unknown_external_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "aaf49b12-c5eb-441f-9c18-77877aeeb051"
+            },
+            "latency_ms": 6.357
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-58",
+            "fixture": "unknown_external_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "4f453597-4a1f-4b13-983a-aec8d457066f"
+            },
+            "latency_ms": 10.602
+          },
+          {
+            "key": "mapping-8df6be476113-r0-baseline-59",
+            "fixture": "unknown_external_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "4da9f659-b39a-4004-9a13-a3ffe9d3ecbe"
+            },
+            "latency_ms": 8.172
+          }
+        ]
+      },
+      "outbox": {
+        "summary": {
+          "valid_inputs": 30,
+          "invalid_inputs": 30,
+          "valid_accepted": 30,
+          "invalid_blocked_422": 30,
+          "invalid_local_rows": 0,
+          "invalid_outbox_rows": 0,
+          "invalid_external_applications": 0,
+          "blocked_by_fixture": {
+            "missing_sku": 10,
+            "inactive_partner": 10,
+            "unknown_external_sku": 10
+          },
+          "statuses": {
+            "200": 30,
+            "422": 30
+          }
+        },
+        "requests": [
+          {
+            "key": "mapping-8df6be476113-r0-outbox-0",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "1314877e-2644-48b0-ba7c-32df69338dfe"
+            },
+            "latency_ms": 22.269
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-1",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "7ce51a5f-8118-4d71-9652-6beb345a3b7d"
+            },
+            "latency_ms": 5.501
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-2",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "3fffb4bc-5795-407c-8837-e8bd952f3837"
+            },
+            "latency_ms": 5.238
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-3",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "f392d44b-9099-4dbc-b3e3-d5ce2b6f1150"
+            },
+            "latency_ms": 5.076
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-4",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "fead498f-e27b-432d-af84-11ebbbff78b8"
+            },
+            "latency_ms": 5.419
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-5",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "1dc53e7c-8e66-459c-99e4-d02ee2d6c4af"
+            },
+            "latency_ms": 6.509
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-6",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "28cfce54-5a94-489b-9292-c96f31a77dd2"
+            },
+            "latency_ms": 5.053
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-7",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "f74488f3-c25e-4018-8d70-fa211fa39d65"
+            },
+            "latency_ms": 4.18
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-8",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "99ede132-2a26-4b99-b1c3-fc4d6a2e358a"
+            },
+            "latency_ms": 5.114
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-9",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "543e6e90-6fa7-47fb-a542-4f63323ecec0"
+            },
+            "latency_ms": 8.047
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-10",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "eca78e44-a5ea-4e85-b796-879c46a9932f"
+            },
+            "latency_ms": 4.331
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-11",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "54c2735e-8fed-4d70-a17e-95f6bf09b6c5"
+            },
+            "latency_ms": 4.332
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-12",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "2e1e1172-c008-4060-9adc-aef1f21de792"
+            },
+            "latency_ms": 5.362
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-13",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "3dd81383-0bc1-42cb-a3fa-4b9418cccf3f"
+            },
+            "latency_ms": 4.471
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-14",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "c4a2e7da-4264-404d-b602-92bfd80a91d6"
+            },
+            "latency_ms": 6.74
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-15",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "e99fc65d-4eb2-4d49-96e6-986d9a99c342"
+            },
+            "latency_ms": 8.136
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-16",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "9137b211-99aa-4f1d-9d81-8ac370df0159"
+            },
+            "latency_ms": 4.645
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-17",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "06a43891-1cc7-4d52-a3a5-a3e1a23721ee"
+            },
+            "latency_ms": 5.089
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-18",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "d3932b03-0d63-4214-8ff5-57ae46880733"
+            },
+            "latency_ms": 4.509
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-19",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "be85aff1-a8bd-485a-be83-3d14ed1c1758"
+            },
+            "latency_ms": 4.557
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-20",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "1ef4afb8-6096-41d1-b68a-0c9fab70ddd9"
+            },
+            "latency_ms": 5.885
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-21",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "c75e8f79-1b1d-4dc5-b708-ba671a241b44"
+            },
+            "latency_ms": 6.432
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-22",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "169f03db-e575-45b5-81ea-2082de72b0ca"
+            },
+            "latency_ms": 4.191
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-23",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "ecd4a360-e0e1-40da-8553-327c88e5acd5"
+            },
+            "latency_ms": 6.876
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-24",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "79841c1c-f8ee-4394-a68d-341dc8fdd143"
+            },
+            "latency_ms": 5.211
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-25",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "c5d68530-4366-4ba9-865e-a8bbeee07b20"
+            },
+            "latency_ms": 5.346
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-26",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "4aecea94-d47c-48bd-9636-ff4c78a7c01e"
+            },
+            "latency_ms": 4.285
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-27",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "f81622fa-48bb-4f5a-aaa4-765217cfdb11"
+            },
+            "latency_ms": 6.517
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-28",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "74ea4bb1-290c-4d6d-9edd-1c438df85918"
+            },
+            "latency_ms": 4.706
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-29",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "888f222f-db55-48d8-8b0c-956dcbe6b6e4"
+            },
+            "latency_ms": 4.374
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-30",
+            "fixture": "missing_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 6.305
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-31",
+            "fixture": "missing_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 4.1
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-32",
+            "fixture": "missing_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.529
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-33",
+            "fixture": "missing_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 5.062
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-34",
+            "fixture": "missing_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 6.146
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-35",
+            "fixture": "missing_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 4.564
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-36",
+            "fixture": "missing_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 4.053
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-37",
+            "fixture": "missing_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 4.406
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-38",
+            "fixture": "missing_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 4.481
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-39",
+            "fixture": "missing_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 4.191
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-40",
+            "fixture": "inactive_partner",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 4.115
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-41",
+            "fixture": "inactive_partner",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 5.162
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-42",
+            "fixture": "inactive_partner",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 4.877
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-43",
+            "fixture": "inactive_partner",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.774
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-44",
+            "fixture": "inactive_partner",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.19
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-45",
+            "fixture": "inactive_partner",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 4.463
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-46",
+            "fixture": "inactive_partner",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.847
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-47",
+            "fixture": "inactive_partner",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 4.535
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-48",
+            "fixture": "inactive_partner",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.71
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-49",
+            "fixture": "inactive_partner",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 4.24
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-50",
+            "fixture": "unknown_external_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.857
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-51",
+            "fixture": "unknown_external_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 4.869
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-52",
+            "fixture": "unknown_external_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 4.322
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-53",
+            "fixture": "unknown_external_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 4.664
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-54",
+            "fixture": "unknown_external_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.745
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-55",
+            "fixture": "unknown_external_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 4.279
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-56",
+            "fixture": "unknown_external_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.89
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-57",
+            "fixture": "unknown_external_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 4.201
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-58",
+            "fixture": "unknown_external_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.535
+          },
+          {
+            "key": "mapping-8df6be476113-r0-outbox-59",
+            "fixture": "unknown_external_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 4.472
+          }
+        ]
+      }
+    },
+    {
+      "baseline": {
+        "summary": {
+          "valid_inputs": 30,
+          "invalid_inputs": 30,
+          "valid_accepted": 30,
+          "invalid_blocked_422": 0,
+          "invalid_local_rows": 30,
+          "invalid_outbox_rows": 0,
+          "invalid_external_applications": 30,
+          "blocked_by_fixture": {},
+          "statuses": {
+            "200": 60
+          }
+        },
+        "requests": [
+          {
+            "key": "mapping-8df6be476113-r1-baseline-0",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "3cee3d1b-12bf-4780-92ec-5ef71b81e242"
+            },
+            "latency_ms": 7.807
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-1",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "afb76d73-816e-401c-b7ed-7b4c9441d5a0"
+            },
+            "latency_ms": 6.75
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-2",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "5c0c19ea-085b-4690-816f-6d1933aee09c"
+            },
+            "latency_ms": 6.781
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-3",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "cddf9c00-6e53-472d-99e5-f841b83fe7b5"
+            },
+            "latency_ms": 7.048
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-4",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "8f5c88cf-4778-4f27-9c0c-62d9ee8a9beb"
+            },
+            "latency_ms": 5.769
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-5",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "7e5837cc-b125-46e6-b124-35e322e3733d"
+            },
+            "latency_ms": 5.832
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-6",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "4653f599-8dee-4a7f-ba50-1d7daf8f3711"
+            },
+            "latency_ms": 6.85
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-7",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "e3ad9321-b75f-42e8-aa58-f42a06646045"
+            },
+            "latency_ms": 7.684
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-8",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "fdd1f58a-ae59-4bfa-8202-f708c704440c"
+            },
+            "latency_ms": 6.242
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-9",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "9eff74de-eb9c-4311-9b7d-867db92e0d74"
+            },
+            "latency_ms": 5.743
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-10",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "465d3917-b16a-43e1-9f09-537286722966"
+            },
+            "latency_ms": 6.356
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-11",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "304cb5c3-a54f-4e8b-bee3-cc7e47c37d3a"
+            },
+            "latency_ms": 5.755
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-12",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "458be37f-3673-460d-8f94-dd0be96acca8"
+            },
+            "latency_ms": 7.064
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-13",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "bf37f29f-43d1-4640-916e-38364ade5796"
+            },
+            "latency_ms": 6.596
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-14",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "89821127-0f27-4bfd-be65-10d1788c8951"
+            },
+            "latency_ms": 5.415
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-15",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "05906ebb-05da-401f-8a80-53b0bbf3d0c1"
+            },
+            "latency_ms": 5.834
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-16",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "608bc095-3670-4947-9946-b2e3cbbe62b2"
+            },
+            "latency_ms": 6.182
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-17",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "db660f2f-69bc-4fb9-bb29-678e98d18f4b"
+            },
+            "latency_ms": 6.896
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-18",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "9e413b53-3381-4727-b029-fafb41fd0f26"
+            },
+            "latency_ms": 5.546
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-19",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "b34eb99b-9a7d-4cc2-9b48-3550da741aba"
+            },
+            "latency_ms": 6.024
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-20",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "a2e53514-ba4c-4f85-b8f5-e117db565d11"
+            },
+            "latency_ms": 5.658
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-21",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "04e97d04-0007-47e6-a44f-74efeccdbe81"
+            },
+            "latency_ms": 6.022
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-22",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "289cb17d-4d9f-4922-83c9-51eff2dcb0b7"
+            },
+            "latency_ms": 7.407
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-23",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "64ec84f8-a4b3-4d2b-98ff-538a5ae8a880"
+            },
+            "latency_ms": 6.635
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-24",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "ab8691c4-18af-4a05-a4d8-970127acde8e"
+            },
+            "latency_ms": 5.588
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-25",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "fa4c47cb-6710-49bd-b852-86aff7d6aaf9"
+            },
+            "latency_ms": 6.105
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-26",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "33b56754-ebb6-4159-80f0-13935d7c06f0"
+            },
+            "latency_ms": 5.164
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-27",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "5180937d-bbfc-43ab-8721-1a562673de79"
+            },
+            "latency_ms": 6.015
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-28",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "10b74504-ddfd-4d3b-8c58-f85817390a9c"
+            },
+            "latency_ms": 7.084
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-29",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "4fccece2-589e-4344-ab33-6c66d2ff342c"
+            },
+            "latency_ms": 5.757
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-30",
+            "fixture": "missing_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "74e4942e-c4b0-4614-88c0-7f3ef936cd41"
+            },
+            "latency_ms": 5.126
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-31",
+            "fixture": "missing_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "d9f4cc33-b18a-4621-8b98-d9b8f51f3191"
+            },
+            "latency_ms": 5.397
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-32",
+            "fixture": "missing_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "1462aa9d-f655-44a1-ada9-596948f83973"
+            },
+            "latency_ms": 5.134
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-33",
+            "fixture": "missing_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "ac3f2baf-5e92-482d-b278-e2d3b9ec561c"
+            },
+            "latency_ms": 6.441
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-34",
+            "fixture": "missing_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "20a3a20a-cd31-47f1-9a99-3775c6d41ef5"
+            },
+            "latency_ms": 6.41
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-35",
+            "fixture": "missing_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "5fc21ffd-47c8-4c17-aa22-ec9300d97b5c"
+            },
+            "latency_ms": 5.599
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-36",
+            "fixture": "missing_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "c783cce7-2c0c-4f8f-ba9c-7f8399c65de9"
+            },
+            "latency_ms": 5.098
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-37",
+            "fixture": "missing_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "c6dc2f74-1ba0-4e0f-969b-df0291409965"
+            },
+            "latency_ms": 5.635
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-38",
+            "fixture": "missing_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "34cb9e0d-b08b-43f4-ae32-768e223d283d"
+            },
+            "latency_ms": 5.009
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-39",
+            "fixture": "missing_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "440bca3b-3b53-40f4-99b9-35d7faa9a00f"
+            },
+            "latency_ms": 5.216
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-40",
+            "fixture": "inactive_partner",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "f51ff5b2-b6ab-47a4-a75a-522203bebf4a"
+            },
+            "latency_ms": 6.258
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-41",
+            "fixture": "inactive_partner",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "ed1a13ac-67fe-4ef3-87df-f8470816f3be"
+            },
+            "latency_ms": 5.125
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-42",
+            "fixture": "inactive_partner",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "81b53ad8-0e9f-4b33-910d-d3672d0a3dce"
+            },
+            "latency_ms": 5.124
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-43",
+            "fixture": "inactive_partner",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "2bd5be35-8f5b-4132-8fe7-2f23fdda9235"
+            },
+            "latency_ms": 5.464
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-44",
+            "fixture": "inactive_partner",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "42c0263c-b566-4d0e-a8ff-dff29d715ac1"
+            },
+            "latency_ms": 5.009
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-45",
+            "fixture": "inactive_partner",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "66e5ba1d-9c92-44b3-ae01-6b5b5dc75637"
+            },
+            "latency_ms": 6.091
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-46",
+            "fixture": "inactive_partner",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "510f6bb1-f882-48be-bb27-66c72d3bd20d"
+            },
+            "latency_ms": 6.148
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-47",
+            "fixture": "inactive_partner",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "93017f13-26e2-4a8d-b012-8ebf5b9215ee"
+            },
+            "latency_ms": 4.966
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-48",
+            "fixture": "inactive_partner",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "22f417ad-f561-4c24-98ed-b7edc46e8b32"
+            },
+            "latency_ms": 6.756
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-49",
+            "fixture": "inactive_partner",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "899ac890-0a99-4cce-8617-0321bb7b7b47"
+            },
+            "latency_ms": 5.327
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-50",
+            "fixture": "unknown_external_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "908a7821-0e58-40e0-bb5d-e144534d14fd"
+            },
+            "latency_ms": 4.699
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-51",
+            "fixture": "unknown_external_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "fe6c01d4-8e9d-41fe-9a9b-08ec6ad8c2d0"
+            },
+            "latency_ms": 6.423
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-52",
+            "fixture": "unknown_external_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "778ada80-855b-4e1b-9c93-cd65b252f511"
+            },
+            "latency_ms": 6.009
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-53",
+            "fixture": "unknown_external_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "b926c87d-5221-40ee-ba59-8d4b8be3b3fa"
+            },
+            "latency_ms": 5.427
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-54",
+            "fixture": "unknown_external_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "7b9232cd-bc21-4134-9a1f-32fcc64803ec"
+            },
+            "latency_ms": 5.344
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-55",
+            "fixture": "unknown_external_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "3bde06c2-b571-4b9d-ac8c-068892774e6d"
+            },
+            "latency_ms": 5.754
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-56",
+            "fixture": "unknown_external_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "8c65cb52-5921-4b11-922f-e50b92f77b6b"
+            },
+            "latency_ms": 5.399
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-57",
+            "fixture": "unknown_external_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "bb2993bc-0bba-4fb7-8a25-9fccd55ce865"
+            },
+            "latency_ms": 6.286
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-58",
+            "fixture": "unknown_external_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "425ee672-1349-4b13-8970-a7d9b346b94f"
+            },
+            "latency_ms": 5.715
+          },
+          {
+            "key": "mapping-8df6be476113-r1-baseline-59",
+            "fixture": "unknown_external_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "01e2ff75-00b6-49bf-918f-e75797515373"
+            },
+            "latency_ms": 4.965
+          }
+        ]
+      },
+      "outbox": {
+        "summary": {
+          "valid_inputs": 30,
+          "invalid_inputs": 30,
+          "valid_accepted": 30,
+          "invalid_blocked_422": 30,
+          "invalid_local_rows": 0,
+          "invalid_outbox_rows": 0,
+          "invalid_external_applications": 0,
+          "blocked_by_fixture": {
+            "missing_sku": 10,
+            "inactive_partner": 10,
+            "unknown_external_sku": 10
+          },
+          "statuses": {
+            "200": 30,
+            "422": 30
+          }
+        },
+        "requests": [
+          {
+            "key": "mapping-8df6be476113-r1-outbox-0",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "2e9eaa45-804f-48c2-9264-e921cfe49a04"
+            },
+            "latency_ms": 5.677
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-1",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "362a09a8-a54a-43b9-9d01-154b2080f7be"
+            },
+            "latency_ms": 3.827
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-2",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "bb28403d-c7ab-4b78-be77-cdc96fb3dd20"
+            },
+            "latency_ms": 3.278
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-3",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "8fa876e6-e8a7-4b91-9241-0e04580ec44e"
+            },
+            "latency_ms": 3.909
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-4",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "da1203b6-89e3-42a2-a848-2f3233c73a18"
+            },
+            "latency_ms": 3.413
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-5",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "fbb677b3-f33b-4a21-9dd5-352804dfed6e"
+            },
+            "latency_ms": 3.07
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-6",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "2880e0b4-e077-4824-92e3-b04b1e9b154b"
+            },
+            "latency_ms": 3.316
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-7",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "bc84a932-2fbb-43a2-9910-ea6432cc12f6"
+            },
+            "latency_ms": 3.244
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-8",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "2c073d17-7a55-4e14-800c-5fd287213b5b"
+            },
+            "latency_ms": 3.823
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-9",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "6b3f3272-5850-4f65-8e8f-43cb8c08e79c"
+            },
+            "latency_ms": 3.701
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-10",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "40f99de6-c371-4662-82cd-79913ba6cdc1"
+            },
+            "latency_ms": 4.126
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-11",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "d3351a78-faf4-432d-9dc1-15e3dd78b24f"
+            },
+            "latency_ms": 3.471
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-12",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "481057ce-1006-4842-b3ec-5e5c7fa4e774"
+            },
+            "latency_ms": 3.174
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-13",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "5cb44f61-6c34-43cd-9f38-1840a5b3b69b"
+            },
+            "latency_ms": 3.276
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-14",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "80a54627-80fc-4fcc-80f0-6b1750a2c431"
+            },
+            "latency_ms": 3.151
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-15",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "3bf224df-5a2b-45f9-aff3-74e531ba04f7"
+            },
+            "latency_ms": 3.291
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-16",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "f60d7603-ff4a-4bc8-9e72-45dc86ce561c"
+            },
+            "latency_ms": 3.126
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-17",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "61e670a3-9434-41af-aa3e-2bc8901d8a55"
+            },
+            "latency_ms": 3.689
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-18",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "7bfb0129-3fe2-4eef-a2e8-cdcbbc14b555"
+            },
+            "latency_ms": 3.824
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-19",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "f26da6e7-2326-47b4-94bb-cf30f1701763"
+            },
+            "latency_ms": 4.028
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-20",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "84813ec5-16db-4454-9c2a-8d3ca1db7c12"
+            },
+            "latency_ms": 3.327
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-21",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "e1e5516a-a868-4b26-9164-0fc8bd2d4ce9"
+            },
+            "latency_ms": 3.454
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-22",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "c0287e02-12d8-433c-b1c9-a68f71e25f73"
+            },
+            "latency_ms": 3.344
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-23",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "b4c9c03c-645a-4ed3-8a88-ecb3092026a0"
+            },
+            "latency_ms": 3.202
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-24",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "97ab0d87-e9ff-4b1e-8f3d-51423502b14a"
+            },
+            "latency_ms": 3.395
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-25",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "178cf0ab-0bff-45cf-8e23-dbc66bedfcfa"
+            },
+            "latency_ms": 3.939
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-26",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "62a44a79-8329-4171-a949-a0afc5cb100e"
+            },
+            "latency_ms": 3.899
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-27",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "ed56b4f6-4a5a-43d2-a5b6-d0c1eb54350b"
+            },
+            "latency_ms": 4.949
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-28",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "bc67a695-b215-4b4a-825a-235e0d24e1c5"
+            },
+            "latency_ms": 4.369
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-29",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "9cf2db31-0f61-4cfa-ad2a-d357783c10f6"
+            },
+            "latency_ms": 3.412
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-30",
+            "fixture": "missing_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.04
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-31",
+            "fixture": "missing_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.224
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-32",
+            "fixture": "missing_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.196
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-33",
+            "fixture": "missing_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.419
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-34",
+            "fixture": "missing_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 2.898
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-35",
+            "fixture": "missing_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 5.982
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-36",
+            "fixture": "missing_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 4.195
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-37",
+            "fixture": "missing_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.998
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-38",
+            "fixture": "missing_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.561
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-39",
+            "fixture": "missing_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 2.827
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-40",
+            "fixture": "inactive_partner",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.175
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-41",
+            "fixture": "inactive_partner",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.608
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-42",
+            "fixture": "inactive_partner",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.345
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-43",
+            "fixture": "inactive_partner",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.094
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-44",
+            "fixture": "inactive_partner",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.348
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-45",
+            "fixture": "inactive_partner",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.478
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-46",
+            "fixture": "inactive_partner",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.911
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-47",
+            "fixture": "inactive_partner",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.087
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-48",
+            "fixture": "inactive_partner",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 2.736
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-49",
+            "fixture": "inactive_partner",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.189
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-50",
+            "fixture": "unknown_external_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.11
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-51",
+            "fixture": "unknown_external_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.433
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-52",
+            "fixture": "unknown_external_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.469
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-53",
+            "fixture": "unknown_external_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.332
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-54",
+            "fixture": "unknown_external_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 2.912
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-55",
+            "fixture": "unknown_external_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.557
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-56",
+            "fixture": "unknown_external_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 4.238
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-57",
+            "fixture": "unknown_external_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.305
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-58",
+            "fixture": "unknown_external_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.048
+          },
+          {
+            "key": "mapping-8df6be476113-r1-outbox-59",
+            "fixture": "unknown_external_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.189
+          }
+        ]
+      }
+    },
+    {
+      "baseline": {
+        "summary": {
+          "valid_inputs": 30,
+          "invalid_inputs": 30,
+          "valid_accepted": 30,
+          "invalid_blocked_422": 0,
+          "invalid_local_rows": 30,
+          "invalid_outbox_rows": 0,
+          "invalid_external_applications": 30,
+          "blocked_by_fixture": {},
+          "statuses": {
+            "200": 60
+          }
+        },
+        "requests": [
+          {
+            "key": "mapping-8df6be476113-r2-baseline-0",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "b83f442a-9b59-4b76-8a41-f6ce8011690e"
+            },
+            "latency_ms": 6.747
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-1",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "7c3b08ae-6a43-4fb9-acf3-5bf4a02932f6"
+            },
+            "latency_ms": 6.028
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-2",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "e2bf405c-ef95-4927-a8e7-a255eea81f72"
+            },
+            "latency_ms": 5.655
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-3",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "d354a666-615e-483f-94eb-92187c6019e7"
+            },
+            "latency_ms": 5.769
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-4",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "be460419-90a5-4ae3-a4fc-2ba14d1ef693"
+            },
+            "latency_ms": 5.06
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-5",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "a49b70ae-2389-4da0-8f83-54b63bb2d77b"
+            },
+            "latency_ms": 5.279
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-6",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "9ee8707c-8d95-4ba7-8800-1945be79ba29"
+            },
+            "latency_ms": 6.203
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-7",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "a599616c-7eb5-4d00-9979-0b63781ff8d9"
+            },
+            "latency_ms": 5.743
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-8",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "c1eb94fc-e8af-423f-a09c-677123f9d766"
+            },
+            "latency_ms": 5.678
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-9",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "a25cdce3-207b-41cd-a037-614d612d5527"
+            },
+            "latency_ms": 4.96
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-10",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "e3bf797b-7963-4e10-9ae4-9020e94fb5b8"
+            },
+            "latency_ms": 5.101
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-11",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "9fecace5-6383-49e5-8a86-6aa1dc1251f5"
+            },
+            "latency_ms": 6.82
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-12",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "7c440fac-f057-4c93-a94f-52eabe38bba7"
+            },
+            "latency_ms": 6.271
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-13",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "31918fe7-932b-4102-9223-528886935bf8"
+            },
+            "latency_ms": 5.481
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-14",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "c6f292b0-4a41-4097-b6eb-f2f6e66a602a"
+            },
+            "latency_ms": 5.017
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-15",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "08d9811c-224c-4600-80eb-1d2b9d5077ca"
+            },
+            "latency_ms": 4.899
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-16",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "1223f3f3-d4b4-49a3-b242-9db8233654c2"
+            },
+            "latency_ms": 5.68
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-17",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "9c936afa-76ee-4cff-99ea-7aac8e3cd66b"
+            },
+            "latency_ms": 7.483
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-18",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "876ed6d5-e89e-4181-b237-f573876db5b4"
+            },
+            "latency_ms": 6.377
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-19",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "d7f27a82-a55c-4e37-ab38-5decbc55af8b"
+            },
+            "latency_ms": 8.451
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-20",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "249964fa-9380-4994-b04f-7d88d780da29"
+            },
+            "latency_ms": 6.153
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-21",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "b21c791c-8cd8-4163-8c60-62f7672dfe74"
+            },
+            "latency_ms": 6.951
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-22",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "9b0232f4-4296-4e10-9059-5aeec3748541"
+            },
+            "latency_ms": 6.84
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-23",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "7b87d657-9c9a-44c5-98d2-b8712296dd26"
+            },
+            "latency_ms": 6.986
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-24",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "4d3e7e9d-5c3e-4c8c-b852-906c89f5df32"
+            },
+            "latency_ms": 6.17
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-25",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "b61c9d78-8468-4037-baa9-b08edbca2227"
+            },
+            "latency_ms": 5.085
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-26",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "149d65d1-42a4-431d-a571-25d9b562d4bc"
+            },
+            "latency_ms": 6.522
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-27",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "09cded75-eb1f-4357-9d29-2cbd2bb07b49"
+            },
+            "latency_ms": 6.657
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-28",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "bc26c8b2-993c-4051-aac0-b1834e17337c"
+            },
+            "latency_ms": 6.457
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-29",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "9e2fc8dd-e239-4b25-ac47-1d936d96ae0d"
+            },
+            "latency_ms": 6.009
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-30",
+            "fixture": "missing_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "37938647-26ca-4656-a90c-dc6b59c04f18"
+            },
+            "latency_ms": 7.638
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-31",
+            "fixture": "missing_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "c10b6b35-e3c8-46f4-b0df-e66e9d2a4a6f"
+            },
+            "latency_ms": 5.662
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-32",
+            "fixture": "missing_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "05232cfc-14ea-448a-bd55-6205b6fc78f9"
+            },
+            "latency_ms": 5.991
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-33",
+            "fixture": "missing_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "1ef289f3-cee4-4cf5-b07e-71a5180880a2"
+            },
+            "latency_ms": 6.284
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-34",
+            "fixture": "missing_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "0e03aa39-1b2e-4ae6-b57a-0d84fbf4b96d"
+            },
+            "latency_ms": 6.07
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-35",
+            "fixture": "missing_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "882ad0b0-257b-46d0-9422-2ecff3d399ea"
+            },
+            "latency_ms": 8.32
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-36",
+            "fixture": "missing_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "938b5dbb-1997-495b-96e5-38c7f282c828"
+            },
+            "latency_ms": 6.51
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-37",
+            "fixture": "missing_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "1fe3bfea-b5ef-4291-b3e0-80400e4a7e6d"
+            },
+            "latency_ms": 6.804
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-38",
+            "fixture": "missing_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "cb707618-3649-48d5-859d-e15379e69630"
+            },
+            "latency_ms": 6.389
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-39",
+            "fixture": "missing_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "9e754840-3ded-4faf-9c03-42ee65d08f9b"
+            },
+            "latency_ms": 6.27
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-40",
+            "fixture": "inactive_partner",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "2e358ec4-3e28-47de-b165-699b0a8acc39"
+            },
+            "latency_ms": 5.809
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-41",
+            "fixture": "inactive_partner",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "e2859c63-4faf-4271-b6ae-b8cfc766df86"
+            },
+            "latency_ms": 6.456
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-42",
+            "fixture": "inactive_partner",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "a6dc7ed4-0c67-4491-be06-9e038ae3261c"
+            },
+            "latency_ms": 6.141
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-43",
+            "fixture": "inactive_partner",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "08de2c89-2e32-4f16-b159-101c127cef43"
+            },
+            "latency_ms": 6.572
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-44",
+            "fixture": "inactive_partner",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "d8b9ffe0-ec20-4fcf-95e0-acd56a976d19"
+            },
+            "latency_ms": 6.537
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-45",
+            "fixture": "inactive_partner",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "00082944-6742-439c-8578-69d769d45b85"
+            },
+            "latency_ms": 6.383
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-46",
+            "fixture": "inactive_partner",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "011b1cec-d603-4af4-95c1-efb2f5138585"
+            },
+            "latency_ms": 7.721
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-47",
+            "fixture": "inactive_partner",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "c853f24e-8ad5-43cc-be2f-d3e9fe4c37be"
+            },
+            "latency_ms": 5.577
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-48",
+            "fixture": "inactive_partner",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "b3ccad49-a10c-4106-8f14-b793b76d2752"
+            },
+            "latency_ms": 5.894
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-49",
+            "fixture": "inactive_partner",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "06d7de2f-c6f1-4696-987c-2f9a69531e71"
+            },
+            "latency_ms": 5.426
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-50",
+            "fixture": "unknown_external_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "7490db28-1d2b-44ac-8e84-d4cbe215d0f4"
+            },
+            "latency_ms": 5.083
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-51",
+            "fixture": "unknown_external_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "92b5de8d-e8ad-440e-87d4-cf55ebb3f661"
+            },
+            "latency_ms": 5.827
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-52",
+            "fixture": "unknown_external_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "49227130-ad4c-4ec7-bf27-abf36a7f11c3"
+            },
+            "latency_ms": 4.914
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-53",
+            "fixture": "unknown_external_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "1bdfcb5a-4e61-4331-a0ba-b095a6bc4dcb"
+            },
+            "latency_ms": 5.009
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-54",
+            "fixture": "unknown_external_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "addb87a7-c02a-46bf-94df-36d533eaf964"
+            },
+            "latency_ms": 5.27
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-55",
+            "fixture": "unknown_external_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "71b45622-9e92-41f1-837d-989cb52f4277"
+            },
+            "latency_ms": 5.786
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-56",
+            "fixture": "unknown_external_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "ade8c7c7-1227-47b1-815e-4f03646f43e7"
+            },
+            "latency_ms": 4.771
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-57",
+            "fixture": "unknown_external_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "d28f47d7-6a48-4d11-9f24-7347ead353f3"
+            },
+            "latency_ms": 5.076
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-58",
+            "fixture": "unknown_external_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "f7f86f0c-47f5-4cc2-801f-f37d90ff8d8c"
+            },
+            "latency_ms": 4.627
+          },
+          {
+            "key": "mapping-8df6be476113-r2-baseline-59",
+            "fixture": "unknown_external_sku",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "69742d2d-cfd2-4ba9-8260-dd9c637c4746"
+            },
+            "latency_ms": 5.16
+          }
+        ]
+      },
+      "outbox": {
+        "summary": {
+          "valid_inputs": 30,
+          "invalid_inputs": 30,
+          "valid_accepted": 30,
+          "invalid_blocked_422": 30,
+          "invalid_local_rows": 0,
+          "invalid_outbox_rows": 0,
+          "invalid_external_applications": 0,
+          "blocked_by_fixture": {
+            "missing_sku": 10,
+            "inactive_partner": 10,
+            "unknown_external_sku": 10
+          },
+          "statuses": {
+            "200": 30,
+            "422": 30
+          }
+        },
+        "requests": [
+          {
+            "key": "mapping-8df6be476113-r2-outbox-0",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "47b058d1-909b-4ff9-a7c5-5432fa7dff23"
+            },
+            "latency_ms": 4.715
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-1",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "83e28fdf-2dec-46f6-9872-302e120aa347"
+            },
+            "latency_ms": 2.934
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-2",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "ecdc01ba-db1c-44e6-9bed-24ad03a1b415"
+            },
+            "latency_ms": 3.24
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-3",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "beae6b09-a141-4170-943a-b998c18dc0e4"
+            },
+            "latency_ms": 3.26
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-4",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "369428aa-52f9-4801-a8a9-5bcc551dcec9"
+            },
+            "latency_ms": 2.97
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-5",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "5419d999-a3e9-4c4a-91a2-af5d9768f72d"
+            },
+            "latency_ms": 3.507
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-6",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "cbd8ba07-e992-4e9e-8f3a-02d22df79b9b"
+            },
+            "latency_ms": 4.026
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-7",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "7f64924f-5d03-4d27-a92c-c19420e0a104"
+            },
+            "latency_ms": 3.552
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-8",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "068a694b-25e8-4124-9fe6-c438c532d346"
+            },
+            "latency_ms": 3.093
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-9",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "3d7fd66c-e648-4b19-bef3-6c436b501222"
+            },
+            "latency_ms": 2.953
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-10",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "e0dc5c5b-aed0-47d2-8de4-eb295f9709c7"
+            },
+            "latency_ms": 3.089
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-11",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "3fae5f55-4ea2-4c99-9701-56126f839cc4"
+            },
+            "latency_ms": 2.847
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-12",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "908f9399-728a-42c7-90e7-f0c81c9a934b"
+            },
+            "latency_ms": 2.957
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-13",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "7addbc47-b7fa-43e2-bbe2-299c1103f2b0"
+            },
+            "latency_ms": 3.104
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-14",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "61327e11-7b95-4f03-b9e9-2bfbc24f6465"
+            },
+            "latency_ms": 3.479
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-15",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "dde1ffc6-6654-4d24-8f54-ce955a8ad146"
+            },
+            "latency_ms": 4.039
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-16",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "7b278c4a-b4e8-43d5-ab4e-efc3600ab46a"
+            },
+            "latency_ms": 3.683
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-17",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "c146c3c6-26a3-4a5b-b1b8-dbf94eb45912"
+            },
+            "latency_ms": 3.363
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-18",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "364f360a-16fd-46ea-9782-dada15da7734"
+            },
+            "latency_ms": 3.077
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-19",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "82e75fd7-4433-454b-b000-ed47e4c5d529"
+            },
+            "latency_ms": 3.321
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-20",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "e34d10a2-82c4-4204-ab14-5e65b2cd926f"
+            },
+            "latency_ms": 3.335
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-21",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "3636f4f0-7b91-43bc-b7b7-d4fc3540b25d"
+            },
+            "latency_ms": 3.544
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-22",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "ce9d1937-a3c8-44aa-8cf6-1cb32cc8ac58"
+            },
+            "latency_ms": 4.15
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-23",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "d5a94df1-8981-4d8f-9d3a-fa721e381732"
+            },
+            "latency_ms": 3.484
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-24",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "26093d29-f811-476f-80c4-d095ba0153dd"
+            },
+            "latency_ms": 4.053
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-25",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "e0495976-d2ae-4674-acd8-0a748a633155"
+            },
+            "latency_ms": 4.463
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-26",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "0ab37b84-fcf4-4be6-b49f-73961ad5a881"
+            },
+            "latency_ms": 3.875
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-27",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "485eaff6-903a-4ca6-9583-519a236b2538"
+            },
+            "latency_ms": 3.95
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-28",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "592a921e-9dec-488e-ac00-5dd1fa851f52"
+            },
+            "latency_ms": 3.738
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-29",
+            "fixture": "valid",
+            "status": 200,
+            "response": {
+              "success": true,
+              "transaction_id": "896d23a4-a4c4-4a5f-b7ee-06ed5500657a"
+            },
+            "latency_ms": 4.263
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-30",
+            "fixture": "missing_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 2.809
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-31",
+            "fixture": "missing_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.063
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-32",
+            "fixture": "missing_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.126
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-33",
+            "fixture": "missing_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.284
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-34",
+            "fixture": "missing_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 4.396
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-35",
+            "fixture": "missing_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.205
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-36",
+            "fixture": "missing_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.072
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-37",
+            "fixture": "missing_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 2.943
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-38",
+            "fixture": "missing_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 4.072
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-39",
+            "fixture": "missing_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.579
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-40",
+            "fixture": "inactive_partner",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.772
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-41",
+            "fixture": "inactive_partner",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 4.198
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-42",
+            "fixture": "inactive_partner",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.826
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-43",
+            "fixture": "inactive_partner",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.29
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-44",
+            "fixture": "inactive_partner",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 2.91
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-45",
+            "fixture": "inactive_partner",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 2.763
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-46",
+            "fixture": "inactive_partner",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.135
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-47",
+            "fixture": "inactive_partner",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.311
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-48",
+            "fixture": "inactive_partner",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.567
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-49",
+            "fixture": "inactive_partner",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.509
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-50",
+            "fixture": "unknown_external_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.446
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-51",
+            "fixture": "unknown_external_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 4.287
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-52",
+            "fixture": "unknown_external_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.885
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-53",
+            "fixture": "unknown_external_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.072
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-54",
+            "fixture": "unknown_external_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.325
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-55",
+            "fixture": "unknown_external_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.643
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-56",
+            "fixture": "unknown_external_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.926
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-57",
+            "fixture": "unknown_external_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 2.904
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-58",
+            "fixture": "unknown_external_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 2.831
+          },
+          {
+            "key": "mapping-8df6be476113-r2-outbox-59",
+            "fixture": "unknown_external_sku",
+            "status": 422,
+            "response": {
+              "error": "missing, inactive, or unknown mapping"
+            },
+            "latency_ms": 3.223
+          }
+        ]
+      }
+    }
+  ],
+  "source_sha256": {
+    "src/main/java/com/inventory/InventoryService.java": "8cf19f83bd665fced2314973833efaa5df162c56b64d9d7d63c3da17b5c96145",
+    "src/main/java/com/inventory/InventoryController.java": "2405b94b36f175532d9fddd2165392a5c2ffc6df5fdc92b48e0047e4ff6fd73f",
+    "src/main/resources/schema.sql": "c9172394836fd5ba9d6b19431590d07212ab99873aaf05475b9e071059915804",
+    "mapping_experiment.py": "aecc47c152876507eb31107922752fb3c4281a67cc5a19d15ccc06e012892740"
+  },
+  "image_ids": {
+    "inventory-reliability-app:latest": "sha256:9373fc5f8e6c09bf38be73efd80496cf0397415431c0c76e40b719643d03e64d",
+    "postgres:17": "sha256:f4c66b820c6f974249089d3d16d86a3698eae11e8746eb6644b2271031e91232",
+    "python:3.12-slim": "sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f"
+  }
+}

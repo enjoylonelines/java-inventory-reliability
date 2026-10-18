@@ -1,0 +1,5451 @@
+{
+  "run_id": "stock-2dd697708fba",
+  "timestamp_utc": "2026-10-18T11:38:16.093748+00:00",
+  "scope": "synthetic PostgreSQL fixture with the repository RPC; not production traffic or deployed DB",
+  "workload": {
+    "rounds": 3,
+    "initial_stock": 60,
+    "orders": 100,
+    "quantity_each": 1,
+    "client_concurrency": 30,
+    "before": "Java baseline invokes copied RPC without the Java stock guard",
+    "after": "Java outbox path invokes the same RPC after participant-only SKU locking and stock check",
+    "external": "independent idempotent mock ERP",
+    "http_target": "http://127.0.0.1:18184",
+    "limit": "only callers taking the same advisory locks are protected"
+  },
+  "rounds": [
+    {
+      "baseline": {
+        "summary": {
+          "status_counts": {
+            "200": 100
+          },
+          "accepted_orders": 100,
+          "rejected_insufficient": 0,
+          "accepted_over_available_stock": 40,
+          "persisted_orders": 100,
+          "persisted_orders_over_available_stock": 40,
+          "final_stock": 6.0,
+          "expected_stock_from_persisted_orders": -40,
+          "stock_arithmetic_mismatch": true,
+          "item_rows_including_seed": 101,
+          "external_applications": 100,
+          "request_wall_ms": 330.153,
+          "p95_request_ms": 150.324
+        },
+        "requests": [
+          {
+            "key": "stock-2dd697708fba-r0-baseline-0",
+            "status": 200,
+            "response": {
+              "transaction_id": "d4a387ce-405c-46e3-8fd0-3984658f46b1",
+              "success": true
+            },
+            "latency_ms": 108.454
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-1",
+            "status": 200,
+            "response": {
+              "transaction_id": "c2998c44-5168-43fe-932a-297532818ae4",
+              "success": true
+            },
+            "latency_ms": 72.724
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-2",
+            "status": 200,
+            "response": {
+              "transaction_id": "139fed6e-05e4-4c10-98d8-dd453e6dd175",
+              "success": true
+            },
+            "latency_ms": 142.9
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-3",
+            "status": 200,
+            "response": {
+              "transaction_id": "bbd35ecc-86a3-4ad5-ba97-c72fc21b7c3d",
+              "success": true
+            },
+            "latency_ms": 63.223
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-4",
+            "status": 200,
+            "response": {
+              "transaction_id": "55aa1958-2932-445d-9580-1b296d52e146",
+              "success": true
+            },
+            "latency_ms": 71.471
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-5",
+            "status": 200,
+            "response": {
+              "transaction_id": "ffa95e83-cea8-4a64-b8a3-cf85d90bbcdf",
+              "success": true
+            },
+            "latency_ms": 156.265
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-6",
+            "status": 200,
+            "response": {
+              "transaction_id": "f5c31bf0-716c-4847-a8a6-203457e33039",
+              "success": true
+            },
+            "latency_ms": 57.39
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-7",
+            "status": 200,
+            "response": {
+              "transaction_id": "7e0fdc46-ebab-4f96-9430-0ad4d5256e5d",
+              "success": true
+            },
+            "latency_ms": 76.234
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-8",
+            "status": 200,
+            "response": {
+              "transaction_id": "4675b0df-1ee7-4374-988c-89f59e0f5620",
+              "success": true
+            },
+            "latency_ms": 144.262
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-9",
+            "status": 200,
+            "response": {
+              "transaction_id": "0909bcf5-0c72-4b02-9ecd-3ff178eab378",
+              "success": true
+            },
+            "latency_ms": 116.73
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-10",
+            "status": 200,
+            "response": {
+              "transaction_id": "93afc178-2ef5-4165-a621-1919e05f9647",
+              "success": true
+            },
+            "latency_ms": 104.774
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-11",
+            "status": 200,
+            "response": {
+              "transaction_id": "47da4e1b-2cf1-4084-a545-35891d6e509e",
+              "success": true
+            },
+            "latency_ms": 146.935
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-12",
+            "status": 200,
+            "response": {
+              "transaction_id": "d5dc0dd3-0fd4-4480-90eb-71f3b8204364",
+              "success": true
+            },
+            "latency_ms": 150.324
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-13",
+            "status": 200,
+            "response": {
+              "transaction_id": "e84de2e4-413c-4ca1-950d-30315deb3138",
+              "success": true
+            },
+            "latency_ms": 135.256
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-14",
+            "status": 200,
+            "response": {
+              "transaction_id": "3ea30f43-826d-4cb3-939d-2c3269c0e0fc",
+              "success": true
+            },
+            "latency_ms": 176.539
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-15",
+            "status": 200,
+            "response": {
+              "transaction_id": "278df313-b31c-42be-a211-b65312fbeff0",
+              "success": true
+            },
+            "latency_ms": 125.508
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-16",
+            "status": 200,
+            "response": {
+              "transaction_id": "b98b40e2-b618-4796-b3f6-ef0071149f35",
+              "success": true
+            },
+            "latency_ms": 100.595
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-17",
+            "status": 200,
+            "response": {
+              "transaction_id": "54ff50bb-2e18-4d89-8fdd-1024bfac78fb",
+              "success": true
+            },
+            "latency_ms": 128.193
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-18",
+            "status": 200,
+            "response": {
+              "transaction_id": "79f5897f-bae1-4361-b899-38e56f8dd3cf",
+              "success": true
+            },
+            "latency_ms": 120.08
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-19",
+            "status": 200,
+            "response": {
+              "transaction_id": "0e6d8886-b622-45e2-b80f-4c08976c3b77",
+              "success": true
+            },
+            "latency_ms": 150.513
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-20",
+            "status": 200,
+            "response": {
+              "transaction_id": "badbf653-2f39-4e0a-a928-d7b7f67c6c75",
+              "success": true
+            },
+            "latency_ms": 92.264
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-21",
+            "status": 200,
+            "response": {
+              "transaction_id": "74101858-6727-4032-a159-a7117288d402",
+              "success": true
+            },
+            "latency_ms": 138.736
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-22",
+            "status": 200,
+            "response": {
+              "transaction_id": "22f098b9-451a-4088-9772-d9dfcd22e0f8",
+              "success": true
+            },
+            "latency_ms": 79.129
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-23",
+            "status": 200,
+            "response": {
+              "transaction_id": "08da00a9-fccf-4bef-81fc-ca8bf005eba0",
+              "success": true
+            },
+            "latency_ms": 64.952
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-24",
+            "status": 200,
+            "response": {
+              "transaction_id": "294a6af5-e05b-43b6-8fbe-d45edb1bfdbf",
+              "success": true
+            },
+            "latency_ms": 130.006
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-25",
+            "status": 200,
+            "response": {
+              "transaction_id": "42071fb7-1c02-4264-9a43-aff43b79b975",
+              "success": true
+            },
+            "latency_ms": 56.239
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-26",
+            "status": 200,
+            "response": {
+              "transaction_id": "e25c6fd2-9f4d-41e1-b47a-cc0b7abd9dd2",
+              "success": true
+            },
+            "latency_ms": 173.024
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-27",
+            "status": 200,
+            "response": {
+              "transaction_id": "10ed07af-90ad-4f69-bcbf-362603c21464",
+              "success": true
+            },
+            "latency_ms": 91.174
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-28",
+            "status": 200,
+            "response": {
+              "transaction_id": "e3c4fcf2-2eb3-4ea9-baad-d7b1e9b66ba6",
+              "success": true
+            },
+            "latency_ms": 164.9
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-29",
+            "status": 200,
+            "response": {
+              "transaction_id": "c282a615-d4d4-4ca3-a824-3ff85fa71097",
+              "success": true
+            },
+            "latency_ms": 131.268
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-30",
+            "status": 200,
+            "response": {
+              "transaction_id": "f0845d00-89fc-4c0d-9089-f4818b6e2d0c",
+              "success": true
+            },
+            "latency_ms": 101.066
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-31",
+            "status": 200,
+            "response": {
+              "transaction_id": "e75cbf62-5837-4205-85d1-408d5f7b3561",
+              "success": true
+            },
+            "latency_ms": 40.694
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-32",
+            "status": 200,
+            "response": {
+              "transaction_id": "861feb2c-2c8a-4878-b40c-f57780185c90",
+              "success": true
+            },
+            "latency_ms": 97.356
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-33",
+            "status": 200,
+            "response": {
+              "transaction_id": "05d6df06-2afc-4186-8183-f7fe64a5b01d",
+              "success": true
+            },
+            "latency_ms": 55.86
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-34",
+            "status": 200,
+            "response": {
+              "transaction_id": "2fdcb2a6-5217-4d56-b3e1-32cece2ab98d",
+              "success": true
+            },
+            "latency_ms": 82.661
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-35",
+            "status": 200,
+            "response": {
+              "transaction_id": "2f528617-b543-45f5-a6a5-84512eeb1008",
+              "success": true
+            },
+            "latency_ms": 92.633
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-36",
+            "status": 200,
+            "response": {
+              "transaction_id": "87e74843-fd65-4215-ac06-162748e8396b",
+              "success": true
+            },
+            "latency_ms": 104.581
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-37",
+            "status": 200,
+            "response": {
+              "transaction_id": "eaa8c2aa-5ef2-4353-8354-656dd9c04746",
+              "success": true
+            },
+            "latency_ms": 110.084
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-38",
+            "status": 200,
+            "response": {
+              "transaction_id": "2cd906a5-2665-4675-a563-9e007ec15c8e",
+              "success": true
+            },
+            "latency_ms": 76.493
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-39",
+            "status": 200,
+            "response": {
+              "transaction_id": "9ea028a4-d704-4f08-a9c1-3f7af37d33c3",
+              "success": true
+            },
+            "latency_ms": 102.804
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-40",
+            "status": 200,
+            "response": {
+              "transaction_id": "4bf3cf94-41fb-493c-a7b1-787151e9706c",
+              "success": true
+            },
+            "latency_ms": 95.189
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-41",
+            "status": 200,
+            "response": {
+              "transaction_id": "4931e56e-1814-45a8-a6e5-0257699be9c0",
+              "success": true
+            },
+            "latency_ms": 71.335
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-42",
+            "status": 200,
+            "response": {
+              "transaction_id": "e936e261-03f3-454d-9bc8-40e015608cd7",
+              "success": true
+            },
+            "latency_ms": 82.663
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-43",
+            "status": 200,
+            "response": {
+              "transaction_id": "533765a1-340a-47da-83cd-6fe8a4f5696a",
+              "success": true
+            },
+            "latency_ms": 90.543
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-44",
+            "status": 200,
+            "response": {
+              "transaction_id": "53341236-17da-4cb0-b87d-e9b442a4e6fc",
+              "success": true
+            },
+            "latency_ms": 84.563
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-45",
+            "status": 200,
+            "response": {
+              "transaction_id": "af0e9fa0-f931-4474-9990-f4d47cb4c3ce",
+              "success": true
+            },
+            "latency_ms": 83.198
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-46",
+            "status": 200,
+            "response": {
+              "transaction_id": "fa6612c0-3760-414d-93f1-d010f14af059",
+              "success": true
+            },
+            "latency_ms": 85.016
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-47",
+            "status": 200,
+            "response": {
+              "transaction_id": "1c3bd0bf-74bf-4889-93ae-ae54b226864f",
+              "success": true
+            },
+            "latency_ms": 82.558
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-48",
+            "status": 200,
+            "response": {
+              "transaction_id": "1973a460-0120-4144-a60c-74e065e407dc",
+              "success": true
+            },
+            "latency_ms": 81.767
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-49",
+            "status": 200,
+            "response": {
+              "transaction_id": "a79c5bb2-6148-44d8-97d3-b0e3a1e55df0",
+              "success": true
+            },
+            "latency_ms": 82.037
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-50",
+            "status": 200,
+            "response": {
+              "transaction_id": "c6268924-83cd-4e99-ada2-67e2197a20be",
+              "success": true
+            },
+            "latency_ms": 83.298
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-51",
+            "status": 200,
+            "response": {
+              "transaction_id": "eafe2b2e-d455-4187-9799-f5ecdf7a4859",
+              "success": true
+            },
+            "latency_ms": 84.24
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-52",
+            "status": 200,
+            "response": {
+              "transaction_id": "bc812cff-c2a1-43d3-bfb1-7b49b049f6e6",
+              "success": true
+            },
+            "latency_ms": 82.293
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-53",
+            "status": 200,
+            "response": {
+              "transaction_id": "f73e38f3-9244-4626-a533-882940c78c5e",
+              "success": true
+            },
+            "latency_ms": 81.813
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-54",
+            "status": 200,
+            "response": {
+              "transaction_id": "f4a77211-219d-4318-afd7-3e3539d4d209",
+              "success": true
+            },
+            "latency_ms": 82.436
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-55",
+            "status": 200,
+            "response": {
+              "transaction_id": "2f6b98a3-0d69-4517-9e8c-b368ea6575b4",
+              "success": true
+            },
+            "latency_ms": 80.465
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-56",
+            "status": 200,
+            "response": {
+              "transaction_id": "e3863fae-2c4b-4a84-92cb-265f271bfd34",
+              "success": true
+            },
+            "latency_ms": 82.707
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-57",
+            "status": 200,
+            "response": {
+              "transaction_id": "986d20d1-be25-4390-af42-950e4215cf37",
+              "success": true
+            },
+            "latency_ms": 80.32
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-58",
+            "status": 200,
+            "response": {
+              "transaction_id": "50bd51d7-8524-4dd7-a1ea-d779766a8929",
+              "success": true
+            },
+            "latency_ms": 143.654
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-59",
+            "status": 200,
+            "response": {
+              "transaction_id": "fede44a6-a8e6-48bd-ae3e-de93a36fe434",
+              "success": true
+            },
+            "latency_ms": 81.108
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-60",
+            "status": 200,
+            "response": {
+              "transaction_id": "285be1c8-d369-4f54-8447-c225e6b5a726",
+              "success": true
+            },
+            "latency_ms": 85.171
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-61",
+            "status": 200,
+            "response": {
+              "transaction_id": "e352da97-6066-48b9-9f39-e3e1da228605",
+              "success": true
+            },
+            "latency_ms": 83.988
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-62",
+            "status": 200,
+            "response": {
+              "transaction_id": "97671e82-6ff8-4ae3-80e5-f092ccc54246",
+              "success": true
+            },
+            "latency_ms": 81.668
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-63",
+            "status": 200,
+            "response": {
+              "transaction_id": "a4648397-26ca-4943-a5a4-747bda192cdd",
+              "success": true
+            },
+            "latency_ms": 83.673
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-64",
+            "status": 200,
+            "response": {
+              "transaction_id": "98def360-29d5-4e16-88b1-5ee3bc4525d3",
+              "success": true
+            },
+            "latency_ms": 81.068
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-65",
+            "status": 200,
+            "response": {
+              "transaction_id": "a587e5cd-f7e0-4471-8da3-e7e023911a75",
+              "success": true
+            },
+            "latency_ms": 78.398
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-66",
+            "status": 200,
+            "response": {
+              "transaction_id": "bd8c0e0a-be4b-4e26-be7c-b87a4c355a95",
+              "success": true
+            },
+            "latency_ms": 82.167
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-67",
+            "status": 200,
+            "response": {
+              "transaction_id": "5aa8e3a0-291d-464a-aee3-a6da8ea416ef",
+              "success": true
+            },
+            "latency_ms": 80.473
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-68",
+            "status": 200,
+            "response": {
+              "transaction_id": "4dd5b539-43af-4b12-a632-b0907ff6b9cd",
+              "success": true
+            },
+            "latency_ms": 134.763
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-69",
+            "status": 200,
+            "response": {
+              "transaction_id": "bacb06f6-8c7c-4417-b76a-abe8864ad283",
+              "success": true
+            },
+            "latency_ms": 74.903
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-70",
+            "status": 200,
+            "response": {
+              "transaction_id": "f19e9c96-48e2-4f0b-b118-528da178524f",
+              "success": true
+            },
+            "latency_ms": 74.472
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-71",
+            "status": 200,
+            "response": {
+              "transaction_id": "a2a2c7d1-a5e7-446e-b9e6-bd9e14320e73",
+              "success": true
+            },
+            "latency_ms": 76.369
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-72",
+            "status": 200,
+            "response": {
+              "transaction_id": "4ce10ca8-0720-47cf-a133-8a8976dbe647",
+              "success": true
+            },
+            "latency_ms": 71.667
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-73",
+            "status": 200,
+            "response": {
+              "transaction_id": "86bca0ca-533c-404b-9640-e24734cb4837",
+              "success": true
+            },
+            "latency_ms": 74.043
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-74",
+            "status": 200,
+            "response": {
+              "transaction_id": "eec778d6-d1be-45ca-ac25-9c0b09922b4a",
+              "success": true
+            },
+            "latency_ms": 72.115
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-75",
+            "status": 200,
+            "response": {
+              "transaction_id": "33a4c472-234e-4cff-811f-6c7e8b6c5e42",
+              "success": true
+            },
+            "latency_ms": 71.409
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-76",
+            "status": 200,
+            "response": {
+              "transaction_id": "2ed16a50-a8b6-49a3-88b5-04f6fb04f7df",
+              "success": true
+            },
+            "latency_ms": 70.926
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-77",
+            "status": 200,
+            "response": {
+              "transaction_id": "9b39fa34-0ec0-442a-a974-52cf5a56ebd8",
+              "success": true
+            },
+            "latency_ms": 72.187
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-78",
+            "status": 200,
+            "response": {
+              "transaction_id": "ae8f1a4a-3a57-43aa-bebc-e2900c88236b",
+              "success": true
+            },
+            "latency_ms": 73.527
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-79",
+            "status": 200,
+            "response": {
+              "transaction_id": "447ec749-83ce-45ca-923a-bfe2f9174911",
+              "success": true
+            },
+            "latency_ms": 72.161
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-80",
+            "status": 200,
+            "response": {
+              "transaction_id": "c7461208-9805-4f93-998f-2db79152019d",
+              "success": true
+            },
+            "latency_ms": 71.086
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-81",
+            "status": 200,
+            "response": {
+              "transaction_id": "d8ffb26d-1570-4411-bfbb-59c04f7d8393",
+              "success": true
+            },
+            "latency_ms": 68.893
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-82",
+            "status": 200,
+            "response": {
+              "transaction_id": "eb4f9a24-4641-44d5-be79-4eef17002de7",
+              "success": true
+            },
+            "latency_ms": 68.7
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-83",
+            "status": 200,
+            "response": {
+              "transaction_id": "966c4c8c-bf0f-434d-978e-03e6385f428b",
+              "success": true
+            },
+            "latency_ms": 70.165
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-84",
+            "status": 200,
+            "response": {
+              "transaction_id": "2d911574-bf1a-4577-a508-334ef2967085",
+              "success": true
+            },
+            "latency_ms": 68.667
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-85",
+            "status": 200,
+            "response": {
+              "transaction_id": "626fa888-014b-42f9-b212-82035ebcb7ae",
+              "success": true
+            },
+            "latency_ms": 7.114
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-86",
+            "status": 200,
+            "response": {
+              "transaction_id": "7646631f-f6af-4667-9b2f-e45944f23744",
+              "success": true
+            },
+            "latency_ms": 72.575
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-87",
+            "status": 200,
+            "response": {
+              "transaction_id": "bf708916-79d7-4534-928e-7231c9476bf1",
+              "success": true
+            },
+            "latency_ms": 65.318
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-88",
+            "status": 200,
+            "response": {
+              "transaction_id": "fc0310a7-baac-4fc8-85cd-1a0666441bbb",
+              "success": true
+            },
+            "latency_ms": 65.349
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-89",
+            "status": 200,
+            "response": {
+              "transaction_id": "1f5589ac-f30b-41da-9450-2b8645094635",
+              "success": true
+            },
+            "latency_ms": 65.217
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-90",
+            "status": 200,
+            "response": {
+              "transaction_id": "58203d85-8481-4877-a5d0-52b4fcd8bcef",
+              "success": true
+            },
+            "latency_ms": 63.106
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-91",
+            "status": 200,
+            "response": {
+              "transaction_id": "b92dbf5f-7c50-4ee2-af56-85b16aab2314",
+              "success": true
+            },
+            "latency_ms": 64.072
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-92",
+            "status": 200,
+            "response": {
+              "transaction_id": "c62221db-1c00-425d-ba39-3c0066bd6ed3",
+              "success": true
+            },
+            "latency_ms": 63.46
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-93",
+            "status": 200,
+            "response": {
+              "transaction_id": "36f89ab9-6a24-4724-b62b-62a00cfb7658",
+              "success": true
+            },
+            "latency_ms": 63.722
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-94",
+            "status": 200,
+            "response": {
+              "transaction_id": "2631c352-0066-43f0-ace0-ec2d7a34ff88",
+              "success": true
+            },
+            "latency_ms": 61.053
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-95",
+            "status": 200,
+            "response": {
+              "transaction_id": "f42e55ef-b51b-4938-9f97-d2ccd1f9167c",
+              "success": true
+            },
+            "latency_ms": 9.408
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-96",
+            "status": 200,
+            "response": {
+              "transaction_id": "15f54eef-145d-4390-a9f1-becd743eb01b",
+              "success": true
+            },
+            "latency_ms": 60.975
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-97",
+            "status": 200,
+            "response": {
+              "transaction_id": "006e36e3-1065-4c5d-ad36-4552303875c4",
+              "success": true
+            },
+            "latency_ms": 61.208
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-98",
+            "status": 200,
+            "response": {
+              "transaction_id": "c2c10c69-10e4-4ffb-8d1f-b72dfea9e677",
+              "success": true
+            },
+            "latency_ms": 60.72
+          },
+          {
+            "key": "stock-2dd697708fba-r0-baseline-99",
+            "status": 200,
+            "response": {
+              "transaction_id": "c2d7922c-9699-49d6-aacf-18a2e396efd9",
+              "success": true
+            },
+            "latency_ms": 60.185
+          }
+        ],
+        "option_id": "02339151-2d7d-4534-b9a7-a099f3576d1c"
+      },
+      "outbox": {
+        "summary": {
+          "status_counts": {
+            "200": 60,
+            "409": 40
+          },
+          "accepted_orders": 60,
+          "rejected_insufficient": 40,
+          "accepted_over_available_stock": 0,
+          "persisted_orders": 60,
+          "persisted_orders_over_available_stock": 0,
+          "final_stock": 0.0,
+          "expected_stock_from_persisted_orders": 0,
+          "stock_arithmetic_mismatch": false,
+          "item_rows_including_seed": 61,
+          "external_applications": 60,
+          "request_wall_ms": 146.903,
+          "p95_request_ms": 58.659
+        },
+        "requests": [
+          {
+            "key": "stock-2dd697708fba-r0-outbox-0",
+            "status": 200,
+            "response": {
+              "transaction_id": "b8ca52b7-d44b-41bf-a0d0-e9e17c1b90ca",
+              "success": true
+            },
+            "latency_ms": 24.875
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-1",
+            "status": 200,
+            "response": {
+              "transaction_id": "f58bc804-e1f9-40bb-8a24-f2de384a0f45",
+              "success": true
+            },
+            "latency_ms": 18.109
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-2",
+            "status": 200,
+            "response": {
+              "transaction_id": "3339df9a-3bbc-4262-8834-0f105c00947c",
+              "success": true
+            },
+            "latency_ms": 20.039
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-3",
+            "status": 200,
+            "response": {
+              "transaction_id": "bebbe373-47ad-41c6-944c-fe85e3a2008a",
+              "success": true
+            },
+            "latency_ms": 13.765
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-4",
+            "status": 200,
+            "response": {
+              "transaction_id": "753155f2-24c5-414d-a493-4b905714650c",
+              "success": true
+            },
+            "latency_ms": 9.316
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-5",
+            "status": 200,
+            "response": {
+              "transaction_id": "ff2d45e1-4fdc-4df0-9ed8-252affd56e71",
+              "success": true
+            },
+            "latency_ms": 11.403
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-6",
+            "status": 200,
+            "response": {
+              "transaction_id": "46d89572-dcfc-458c-8baa-5aceedd434a6",
+              "success": true
+            },
+            "latency_ms": 15.138
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-7",
+            "status": 200,
+            "response": {
+              "transaction_id": "52998dbf-9d11-4272-a5c9-dd848d343e37",
+              "success": true
+            },
+            "latency_ms": 25.374
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-8",
+            "status": 200,
+            "response": {
+              "transaction_id": "a666b904-6b97-4c82-9417-0c5262557058",
+              "success": true
+            },
+            "latency_ms": 36.709
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-9",
+            "status": 200,
+            "response": {
+              "transaction_id": "9b9f9414-083e-442f-b06e-4c849c3e51eb",
+              "success": true
+            },
+            "latency_ms": 20.472
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-10",
+            "status": 200,
+            "response": {
+              "transaction_id": "f3b535bd-8533-4d83-b8af-a770a8e9dc24",
+              "success": true
+            },
+            "latency_ms": 32.363
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-11",
+            "status": 200,
+            "response": {
+              "transaction_id": "78ff9ae5-bb2e-40c1-8967-bd705294be3b",
+              "success": true
+            },
+            "latency_ms": 33.924
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-12",
+            "status": 200,
+            "response": {
+              "transaction_id": "07650554-b124-4df6-9f63-542c56c7b0ef",
+              "success": true
+            },
+            "latency_ms": 29.791
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-13",
+            "status": 200,
+            "response": {
+              "transaction_id": "ecb3b3e3-450b-40ce-95e4-da715e9161e7",
+              "success": true
+            },
+            "latency_ms": 54.971
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-14",
+            "status": 200,
+            "response": {
+              "transaction_id": "85732279-e4ec-4510-afc5-11c6080a1387",
+              "success": true
+            },
+            "latency_ms": 27.347
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-15",
+            "status": 200,
+            "response": {
+              "transaction_id": "a1972e6c-9f1b-42a5-a62c-630b53ee8299",
+              "success": true
+            },
+            "latency_ms": 39.022
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-16",
+            "status": 200,
+            "response": {
+              "transaction_id": "33f6e8ab-f573-4429-97ec-430d5903f2ea",
+              "success": true
+            },
+            "latency_ms": 36.991
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-17",
+            "status": 200,
+            "response": {
+              "transaction_id": "2ca8d63c-9c38-47b8-a96f-fd25290fbaf9",
+              "success": true
+            },
+            "latency_ms": 65.151
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-18",
+            "status": 200,
+            "response": {
+              "transaction_id": "699fb055-21b7-4367-895d-d1537809eb59",
+              "success": true
+            },
+            "latency_ms": 59.122
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-19",
+            "status": 200,
+            "response": {
+              "transaction_id": "909754ba-b0e1-4485-b966-ca7607b233aa",
+              "success": true
+            },
+            "latency_ms": 42.007
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-20",
+            "status": 200,
+            "response": {
+              "transaction_id": "ab80578e-49f7-4af1-8573-ff6b698eaff4",
+              "success": true
+            },
+            "latency_ms": 24.037
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-21",
+            "status": 200,
+            "response": {
+              "transaction_id": "155e43fc-c5c6-4b31-98b5-6ebb4421f262",
+              "success": true
+            },
+            "latency_ms": 62.24
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-22",
+            "status": 200,
+            "response": {
+              "transaction_id": "026bcdef-7e1c-48b7-9663-b7c6d3fbe5f8",
+              "success": true
+            },
+            "latency_ms": 43.369
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-23",
+            "status": 200,
+            "response": {
+              "transaction_id": "7cd9cd33-cd87-44d1-95cd-96abc0f96340",
+              "success": true
+            },
+            "latency_ms": 48.646
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-24",
+            "status": 200,
+            "response": {
+              "transaction_id": "b42df2e9-333c-4431-972b-5fbc1bfdc1f4",
+              "success": true
+            },
+            "latency_ms": 46.637
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-25",
+            "status": 200,
+            "response": {
+              "transaction_id": "0e1d2fc8-01c9-4e6d-99b8-e501a26cb39b",
+              "success": true
+            },
+            "latency_ms": 50.32
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-26",
+            "status": 200,
+            "response": {
+              "transaction_id": "ca7aa1f7-61de-4849-9413-6c4672f523ac",
+              "success": true
+            },
+            "latency_ms": 38.762
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-27",
+            "status": 200,
+            "response": {
+              "transaction_id": "e5fffcde-d799-42e9-baf4-cb833e218920",
+              "success": true
+            },
+            "latency_ms": 54.023
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-28",
+            "status": 200,
+            "response": {
+              "transaction_id": "8dda5d02-7414-4bb0-843c-8678eb46a9d4",
+              "success": true
+            },
+            "latency_ms": 55.512
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-29",
+            "status": 200,
+            "response": {
+              "transaction_id": "b2c84b1f-1b3b-43ee-9b16-107dbd147ea4",
+              "success": true
+            },
+            "latency_ms": 44.015
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-30",
+            "status": 200,
+            "response": {
+              "transaction_id": "79a69b22-7386-474c-8c62-9764928ce63a",
+              "success": true
+            },
+            "latency_ms": 55.346
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-31",
+            "status": 200,
+            "response": {
+              "transaction_id": "1d390d92-d997-490c-ab57-0c594385fb1c",
+              "success": true
+            },
+            "latency_ms": 58.735
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-32",
+            "status": 200,
+            "response": {
+              "transaction_id": "3c4be476-0684-4828-8c3b-abeac3dcf2e0",
+              "success": true
+            },
+            "latency_ms": 58.372
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-33",
+            "status": 200,
+            "response": {
+              "transaction_id": "fcd96683-6ebe-4c51-be83-8728aecdd109",
+              "success": true
+            },
+            "latency_ms": 58.385
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-34",
+            "status": 200,
+            "response": {
+              "transaction_id": "a43cb9ca-0df1-4e7c-87ab-060c08151e5d",
+              "success": true
+            },
+            "latency_ms": 58.479
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-35",
+            "status": 200,
+            "response": {
+              "transaction_id": "c024164d-93a7-45b6-bc57-149a61488785",
+              "success": true
+            },
+            "latency_ms": 58.287
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-36",
+            "status": 200,
+            "response": {
+              "transaction_id": "f1549d6d-b0a6-4304-a050-f327a1335f9c",
+              "success": true
+            },
+            "latency_ms": 58.074
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-37",
+            "status": 200,
+            "response": {
+              "transaction_id": "98b7c515-9a00-485b-a698-157e331cb8bc",
+              "success": true
+            },
+            "latency_ms": 57.921
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-38",
+            "status": 200,
+            "response": {
+              "transaction_id": "d25b5079-0cdb-4403-a1f4-6eb0ff222402",
+              "success": true
+            },
+            "latency_ms": 57.971
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-39",
+            "status": 200,
+            "response": {
+              "transaction_id": "463f9de9-d63e-4801-a6f5-b734e1111a30",
+              "success": true
+            },
+            "latency_ms": 57.84
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-40",
+            "status": 200,
+            "response": {
+              "transaction_id": "ae306f65-46a7-4589-920c-4880d7b49d45",
+              "success": true
+            },
+            "latency_ms": 58.181
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-41",
+            "status": 200,
+            "response": {
+              "transaction_id": "2044dff8-4940-4271-bcc9-d4e2a7f5def7",
+              "success": true
+            },
+            "latency_ms": 58.641
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-42",
+            "status": 200,
+            "response": {
+              "transaction_id": "8d33b534-0921-4e77-a89d-2a35ec339789",
+              "success": true
+            },
+            "latency_ms": 58.904
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-43",
+            "status": 200,
+            "response": {
+              "transaction_id": "9ffcdca0-d01a-43a1-9187-7d7dd5718124",
+              "success": true
+            },
+            "latency_ms": 58.653
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-44",
+            "status": 200,
+            "response": {
+              "transaction_id": "86437276-71a3-4e3f-9351-ca6871f8dd5e",
+              "success": true
+            },
+            "latency_ms": 58.659
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-45",
+            "status": 200,
+            "response": {
+              "transaction_id": "be7f7f13-4e58-4c0b-a38b-e60810e83372",
+              "success": true
+            },
+            "latency_ms": 58.288
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-46",
+            "status": 200,
+            "response": {
+              "transaction_id": "4777133b-a10b-462d-a3da-1a68c2b0ce44",
+              "success": true
+            },
+            "latency_ms": 58.634
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-47",
+            "status": 200,
+            "response": {
+              "transaction_id": "1fab2d5c-c161-408b-8730-83b8bae33516",
+              "success": true
+            },
+            "latency_ms": 58.24
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-48",
+            "status": 200,
+            "response": {
+              "transaction_id": "3fa80115-3a7e-414c-9016-f67a2e040d10",
+              "success": true
+            },
+            "latency_ms": 58.093
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-49",
+            "status": 200,
+            "response": {
+              "transaction_id": "346b7e69-8cc4-4a1a-a4ce-efd14a984125",
+              "success": true
+            },
+            "latency_ms": 57.772
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-50",
+            "status": 200,
+            "response": {
+              "transaction_id": "b41c8f7b-02e5-4216-bb07-dc0e2981a01d",
+              "success": true
+            },
+            "latency_ms": 58.138
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-51",
+            "status": 200,
+            "response": {
+              "transaction_id": "67f5cbe9-a12d-4681-bd55-69ffc1bfdaea",
+              "success": true
+            },
+            "latency_ms": 57.78
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-52",
+            "status": 200,
+            "response": {
+              "transaction_id": "3f359c9c-5c01-49e3-859c-87d5d7926454",
+              "success": true
+            },
+            "latency_ms": 57.878
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-53",
+            "status": 200,
+            "response": {
+              "transaction_id": "7d8a9c5a-ed9f-4e6a-bd5b-127dd8beb457",
+              "success": true
+            },
+            "latency_ms": 57.406
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-54",
+            "status": 200,
+            "response": {
+              "transaction_id": "147176f1-f1c1-46b8-9c43-36a029d8cd1c",
+              "success": true
+            },
+            "latency_ms": 56.842
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-55",
+            "status": 200,
+            "response": {
+              "transaction_id": "e79f763a-ac07-448c-bff0-fc9a5863a95f",
+              "success": true
+            },
+            "latency_ms": 56.738
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-56",
+            "status": 200,
+            "response": {
+              "transaction_id": "1806380a-ebe3-4f4d-a53e-ef48bd3a8709",
+              "success": true
+            },
+            "latency_ms": 57.12
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-57",
+            "status": 200,
+            "response": {
+              "transaction_id": "6148961b-e812-43c1-9274-44f301a59241",
+              "success": true
+            },
+            "latency_ms": 57.256
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-58",
+            "status": 200,
+            "response": {
+              "transaction_id": "4ea40bae-838c-4566-b62e-9223f318d868",
+              "success": true
+            },
+            "latency_ms": 56.985
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-59",
+            "status": 200,
+            "response": {
+              "transaction_id": "2a37eec0-c436-4693-b4eb-034b72bfd075",
+              "success": true
+            },
+            "latency_ms": 57.785
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-60",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 56.149
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-61",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 54.678
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-62",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 53.987
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-63",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 52.674
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-64",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 52.33
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-65",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 50.594
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-66",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 49.047
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-67",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 48.129
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-68",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 46.403
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-69",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 46.759
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-70",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 44.187
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-71",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 43.112
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-72",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 40.253
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-73",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 39.931
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-74",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 37.149
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-75",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 36.298
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-76",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 34.65
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-77",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 33.746
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-78",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 39.581
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-79",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 31.36
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-80",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 29.059
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-81",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 34.846
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-82",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 26.481
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-83",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 26.61
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-84",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 30.491
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-85",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 23.082
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-86",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 21.355
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-87",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 19.649
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-88",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 18.037
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-89",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 16.813
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-90",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 16.617
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-91",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 16.457
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-92",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 15.875
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-93",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 15.575
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-94",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 14.013
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-95",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 8.499
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-96",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 13.995
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-97",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 6.912
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-98",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 13.542
+          },
+          {
+            "key": "stock-2dd697708fba-r0-outbox-99",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 6.626
+          }
+        ],
+        "option_id": "49252f96-844f-4ca6-92bd-6965f34a32dc"
+      }
+    },
+    {
+      "baseline": {
+        "summary": {
+          "status_counts": {
+            "200": 99,
+            "502": 1
+          },
+          "accepted_orders": 99,
+          "rejected_insufficient": 0,
+          "accepted_over_available_stock": 39,
+          "persisted_orders": 100,
+          "persisted_orders_over_available_stock": 40,
+          "final_stock": 0.0,
+          "expected_stock_from_persisted_orders": -40,
+          "stock_arithmetic_mismatch": true,
+          "item_rows_including_seed": 101,
+          "external_applications": 99,
+          "request_wall_ms": 249.2,
+          "p95_request_ms": 90.696
+        },
+        "requests": [
+          {
+            "key": "stock-2dd697708fba-r1-baseline-0",
+            "status": 200,
+            "response": {
+              "transaction_id": "29a3eead-4880-4ebb-9f8e-d9befcf65853",
+              "success": true
+            },
+            "latency_ms": 24.567
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-1",
+            "status": 502,
+            "response": {
+              "error": "mock ERP delivery failed"
+            },
+            "latency_ms": 17.691
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-2",
+            "status": 200,
+            "response": {
+              "transaction_id": "c132d344-ee57-459f-8dad-64e040b43015",
+              "success": true
+            },
+            "latency_ms": 125.032
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-3",
+            "status": 200,
+            "response": {
+              "transaction_id": "581ac510-df16-4257-89a9-6d2600fdde01",
+              "success": true
+            },
+            "latency_ms": 16.746
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-4",
+            "status": 200,
+            "response": {
+              "transaction_id": "ead2f6f5-78ed-4025-94aa-482dfa69d222",
+              "success": true
+            },
+            "latency_ms": 11.78
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-5",
+            "status": 200,
+            "response": {
+              "transaction_id": "6e00ec1d-83d0-4323-be59-d03d5dcfab27",
+              "success": true
+            },
+            "latency_ms": 22.607
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-6",
+            "status": 200,
+            "response": {
+              "transaction_id": "fa3c8906-9b56-4184-aec5-7a0142b99ee5",
+              "success": true
+            },
+            "latency_ms": 48.392
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-7",
+            "status": 200,
+            "response": {
+              "transaction_id": "7a469908-ab3f-4760-9805-7520bd05d082",
+              "success": true
+            },
+            "latency_ms": 30.324
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-8",
+            "status": 200,
+            "response": {
+              "transaction_id": "771cff41-b35c-427f-9c9c-49f1f47d17e9",
+              "success": true
+            },
+            "latency_ms": 61.377
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-9",
+            "status": 200,
+            "response": {
+              "transaction_id": "989e343b-56b1-4c7c-818d-5407ff2e567f",
+              "success": true
+            },
+            "latency_ms": 77.576
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-10",
+            "status": 200,
+            "response": {
+              "transaction_id": "94f7134e-cf69-4e4b-af36-c8c936cc5ced",
+              "success": true
+            },
+            "latency_ms": 90.135
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-11",
+            "status": 200,
+            "response": {
+              "transaction_id": "eaa2c43e-c3d0-4e2c-b406-7fb899287d4a",
+              "success": true
+            },
+            "latency_ms": 32.333
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-12",
+            "status": 200,
+            "response": {
+              "transaction_id": "7af83ff1-73d8-4d43-a351-a0fe85859f2d",
+              "success": true
+            },
+            "latency_ms": 49.135
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-13",
+            "status": 200,
+            "response": {
+              "transaction_id": "121aae1a-859c-49c0-ad0d-2ad90a9827d3",
+              "success": true
+            },
+            "latency_ms": 40.824
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-14",
+            "status": 200,
+            "response": {
+              "transaction_id": "33732e06-3370-4954-a255-cdc13e554823",
+              "success": true
+            },
+            "latency_ms": 37.642
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-15",
+            "status": 200,
+            "response": {
+              "transaction_id": "c324b94a-6452-493b-b306-09d7bdb57752",
+              "success": true
+            },
+            "latency_ms": 43.275
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-16",
+            "status": 200,
+            "response": {
+              "transaction_id": "6a727e53-6db6-42da-9860-ef7f98356ecd",
+              "success": true
+            },
+            "latency_ms": 99.211
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-17",
+            "status": 200,
+            "response": {
+              "transaction_id": "3fed5c10-c646-436d-ab5b-c1d36f8efe1b",
+              "success": true
+            },
+            "latency_ms": 56.58
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-18",
+            "status": 200,
+            "response": {
+              "transaction_id": "b4a3da4c-605d-4f4b-bba3-dd0888cd97ca",
+              "success": true
+            },
+            "latency_ms": 61.712
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-19",
+            "status": 200,
+            "response": {
+              "transaction_id": "cf32d1eb-f8a0-4986-950e-240d416b8a87",
+              "success": true
+            },
+            "latency_ms": 65.813
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-20",
+            "status": 200,
+            "response": {
+              "transaction_id": "a2f618e3-7dba-4d3f-888c-f96b872a1d4e",
+              "success": true
+            },
+            "latency_ms": 77.987
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-21",
+            "status": 200,
+            "response": {
+              "transaction_id": "8b221445-b220-47bd-9784-6f2acecde6ff",
+              "success": true
+            },
+            "latency_ms": 50.266
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-22",
+            "status": 200,
+            "response": {
+              "transaction_id": "1ff99e70-281d-464b-9b71-acbb387faed6",
+              "success": true
+            },
+            "latency_ms": 77.321
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-23",
+            "status": 200,
+            "response": {
+              "transaction_id": "5ea0ba45-3dfe-4215-93c6-721cbd3e77c7",
+              "success": true
+            },
+            "latency_ms": 67.752
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-24",
+            "status": 200,
+            "response": {
+              "transaction_id": "3870a30b-9b7b-4994-889d-6535fd732eec",
+              "success": true
+            },
+            "latency_ms": 114.297
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-25",
+            "status": 200,
+            "response": {
+              "transaction_id": "9862ef49-2d48-45b6-a7ae-127e3e611a29",
+              "success": true
+            },
+            "latency_ms": 62.728
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-26",
+            "status": 200,
+            "response": {
+              "transaction_id": "c3ad3ff0-c4e9-439f-861e-7e08af3fce0d",
+              "success": true
+            },
+            "latency_ms": 71.237
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-27",
+            "status": 200,
+            "response": {
+              "transaction_id": "85240e6d-8c86-4145-9e78-677d3975b5fe",
+              "success": true
+            },
+            "latency_ms": 68.5
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-28",
+            "status": 200,
+            "response": {
+              "transaction_id": "5d09b22d-ed9e-49b3-b08a-0d54973570d6",
+              "success": true
+            },
+            "latency_ms": 81.932
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-29",
+            "status": 200,
+            "response": {
+              "transaction_id": "e6d72e01-c693-4fba-873c-92675e0d8ec9",
+              "success": true
+            },
+            "latency_ms": 102.595
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-30",
+            "status": 200,
+            "response": {
+              "transaction_id": "a4c47f6c-3290-4718-b585-545013784f09",
+              "success": true
+            },
+            "latency_ms": 15.177
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-31",
+            "status": 200,
+            "response": {
+              "transaction_id": "41870cab-c254-4adb-ae9c-8d62797c3213",
+              "success": true
+            },
+            "latency_ms": 80.263
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-32",
+            "status": 200,
+            "response": {
+              "transaction_id": "3f444166-c5b3-46d1-8982-2b64e167ccc4",
+              "success": true
+            },
+            "latency_ms": 90.696
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-33",
+            "status": 200,
+            "response": {
+              "transaction_id": "eaa13fdd-a809-47c2-9541-9802fde44782",
+              "success": true
+            },
+            "latency_ms": 72.125
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-34",
+            "status": 200,
+            "response": {
+              "transaction_id": "7bc59780-1e54-4a59-adc9-8bc7bbf1b873",
+              "success": true
+            },
+            "latency_ms": 66.79
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-35",
+            "status": 200,
+            "response": {
+              "transaction_id": "f6c043db-c285-4f6d-aa2d-8798faf8f26c",
+              "success": true
+            },
+            "latency_ms": 77.977
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-36",
+            "status": 200,
+            "response": {
+              "transaction_id": "90034503-34ee-4cb5-9eab-5b72e9799e19",
+              "success": true
+            },
+            "latency_ms": 69.813
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-37",
+            "status": 200,
+            "response": {
+              "transaction_id": "31d571d5-536a-4d56-9e5f-27e8f2a5d7d7",
+              "success": true
+            },
+            "latency_ms": 78.818
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-38",
+            "status": 200,
+            "response": {
+              "transaction_id": "06425ac9-3d1a-4076-a57a-85068feeb9e5",
+              "success": true
+            },
+            "latency_ms": 70.225
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-39",
+            "status": 200,
+            "response": {
+              "transaction_id": "9c3b8396-d9a8-4f7d-9b18-aa601bee3624",
+              "success": true
+            },
+            "latency_ms": 73.348
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-40",
+            "status": 200,
+            "response": {
+              "transaction_id": "a45da82c-c797-48e3-9229-3359cc114c00",
+              "success": true
+            },
+            "latency_ms": 75.272
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-41",
+            "status": 200,
+            "response": {
+              "transaction_id": "14d31de3-74a6-4f65-b4fc-e2505045824d",
+              "success": true
+            },
+            "latency_ms": 74.213
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-42",
+            "status": 200,
+            "response": {
+              "transaction_id": "ab619141-f82f-420f-8e3e-3eda3fa608b0",
+              "success": true
+            },
+            "latency_ms": 5.674
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-43",
+            "status": 200,
+            "response": {
+              "transaction_id": "8d6d6077-746e-44a4-a256-9780cbddf92f",
+              "success": true
+            },
+            "latency_ms": 73.898
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-44",
+            "status": 200,
+            "response": {
+              "transaction_id": "68cb9bf5-a8dd-448a-8412-ed79a8124ad0",
+              "success": true
+            },
+            "latency_ms": 73.844
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-45",
+            "status": 200,
+            "response": {
+              "transaction_id": "e0870e3b-bb89-49a5-b05c-b6f34fdb9d8a",
+              "success": true
+            },
+            "latency_ms": 72.142
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-46",
+            "status": 200,
+            "response": {
+              "transaction_id": "d33a592b-a7f5-4a9b-b3b0-2a13a763551c",
+              "success": true
+            },
+            "latency_ms": 72.271
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-47",
+            "status": 200,
+            "response": {
+              "transaction_id": "a8ae5d72-7519-4851-90a8-97bab269af92",
+              "success": true
+            },
+            "latency_ms": 73.958
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-48",
+            "status": 200,
+            "response": {
+              "transaction_id": "4c4f6672-3429-4ebb-ada2-f027a19c08fb",
+              "success": true
+            },
+            "latency_ms": 73.596
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-49",
+            "status": 200,
+            "response": {
+              "transaction_id": "c0f8a5a3-e70e-45ed-b603-4888062c326a",
+              "success": true
+            },
+            "latency_ms": 73.291
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-50",
+            "status": 200,
+            "response": {
+              "transaction_id": "078e3496-5c5d-424c-8c34-362f64dd3931",
+              "success": true
+            },
+            "latency_ms": 73.815
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-51",
+            "status": 200,
+            "response": {
+              "transaction_id": "3829a35d-e83f-431d-9749-f76b2dbbf178",
+              "success": true
+            },
+            "latency_ms": 73.333
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-52",
+            "status": 200,
+            "response": {
+              "transaction_id": "55f7bbe9-2d0f-4e18-9159-2b55284b1322",
+              "success": true
+            },
+            "latency_ms": 72.925
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-53",
+            "status": 200,
+            "response": {
+              "transaction_id": "b30c95e4-cee0-474a-ba72-efe35078b174",
+              "success": true
+            },
+            "latency_ms": 73.326
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-54",
+            "status": 200,
+            "response": {
+              "transaction_id": "9b7a762e-94ce-4df7-b3f4-49162bed1b36",
+              "success": true
+            },
+            "latency_ms": 130.754
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-55",
+            "status": 200,
+            "response": {
+              "transaction_id": "5b77a809-e22a-4980-9b50-06995a555434",
+              "success": true
+            },
+            "latency_ms": 73.227
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-56",
+            "status": 200,
+            "response": {
+              "transaction_id": "5e971408-a304-42a2-a9e6-85ae7f52227d",
+              "success": true
+            },
+            "latency_ms": 71.086
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-57",
+            "status": 200,
+            "response": {
+              "transaction_id": "12f71ce3-af5e-44ea-b3e9-9e0d40986f05",
+              "success": true
+            },
+            "latency_ms": 70.072
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-58",
+            "status": 200,
+            "response": {
+              "transaction_id": "1102c1e2-ddef-4893-8c3e-d53ed1d3c689",
+              "success": true
+            },
+            "latency_ms": 74.939
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-59",
+            "status": 200,
+            "response": {
+              "transaction_id": "6b4c76d0-c3e3-40b0-b24b-c6f4b89d69e8",
+              "success": true
+            },
+            "latency_ms": 71.697
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-60",
+            "status": 200,
+            "response": {
+              "transaction_id": "d661efd5-2bd9-4a98-a898-64e3a0d74130",
+              "success": true
+            },
+            "latency_ms": 74.129
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-61",
+            "status": 200,
+            "response": {
+              "transaction_id": "6c8eea5a-207a-4f31-9b7d-44f01f4c2cfa",
+              "success": true
+            },
+            "latency_ms": 72.72
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-62",
+            "status": 200,
+            "response": {
+              "transaction_id": "18834233-2f44-4886-bcc7-2ed8f1376d6e",
+              "success": true
+            },
+            "latency_ms": 73.247
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-63",
+            "status": 200,
+            "response": {
+              "transaction_id": "c872533d-f680-4ed9-b73f-42b0013e5523",
+              "success": true
+            },
+            "latency_ms": 75.514
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-64",
+            "status": 200,
+            "response": {
+              "transaction_id": "4f10e966-d1ac-47f7-83d0-82f797cc572a",
+              "success": true
+            },
+            "latency_ms": 76.555
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-65",
+            "status": 200,
+            "response": {
+              "transaction_id": "90c7c5b2-620b-4f58-9b6a-595c397d65be",
+              "success": true
+            },
+            "latency_ms": 72.813
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-66",
+            "status": 200,
+            "response": {
+              "transaction_id": "c3fb6433-d02e-49e5-a5e2-6a2e2e8aa396",
+              "success": true
+            },
+            "latency_ms": 75.854
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-67",
+            "status": 200,
+            "response": {
+              "transaction_id": "be1f55c5-aefd-472d-8bf8-c3f937473dd3",
+              "success": true
+            },
+            "latency_ms": 76.184
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-68",
+            "status": 200,
+            "response": {
+              "transaction_id": "156767b1-2c62-4b41-8365-cf0a03711fa9",
+              "success": true
+            },
+            "latency_ms": 75.464
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-69",
+            "status": 200,
+            "response": {
+              "transaction_id": "910ed723-0ce0-4b28-a112-80ee831d623d",
+              "success": true
+            },
+            "latency_ms": 74.141
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-70",
+            "status": 200,
+            "response": {
+              "transaction_id": "c33849ea-b2b4-4cdb-bbbc-7f1818915e8a",
+              "success": true
+            },
+            "latency_ms": 74.298
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-71",
+            "status": 200,
+            "response": {
+              "transaction_id": "8c4840b4-f5ba-4d34-a076-9dee46bb74a7",
+              "success": true
+            },
+            "latency_ms": 76.46
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-72",
+            "status": 200,
+            "response": {
+              "transaction_id": "5c194484-0705-46d1-8c18-103102f86eba",
+              "success": true
+            },
+            "latency_ms": 73.462
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-73",
+            "status": 200,
+            "response": {
+              "transaction_id": "c28542f3-a314-470d-b178-7ce84e562612",
+              "success": true
+            },
+            "latency_ms": 72.236
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-74",
+            "status": 200,
+            "response": {
+              "transaction_id": "e294a5dd-4503-40c2-b975-dde06b9aa6cf",
+              "success": true
+            },
+            "latency_ms": 72.525
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-75",
+            "status": 200,
+            "response": {
+              "transaction_id": "ed89c254-78e0-46fe-a5ce-be2740981aae",
+              "success": true
+            },
+            "latency_ms": 71.756
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-76",
+            "status": 200,
+            "response": {
+              "transaction_id": "b13ede9d-c79f-4133-80e1-d1e5c29e6629",
+              "success": true
+            },
+            "latency_ms": 70.835
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-77",
+            "status": 200,
+            "response": {
+              "transaction_id": "794eea5c-367b-44bc-afe3-4e2c638386ef",
+              "success": true
+            },
+            "latency_ms": 68.356
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-78",
+            "status": 200,
+            "response": {
+              "transaction_id": "f40d9b0d-1d31-42cf-9b7a-74f7cc0692cb",
+              "success": true
+            },
+            "latency_ms": 67.209
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-79",
+            "status": 200,
+            "response": {
+              "transaction_id": "7be08bb6-61ff-418b-b15b-6ca68beab135",
+              "success": true
+            },
+            "latency_ms": 67.727
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-80",
+            "status": 200,
+            "response": {
+              "transaction_id": "409a994c-087b-4b03-90fd-5132a2c98be6",
+              "success": true
+            },
+            "latency_ms": 7.374
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-81",
+            "status": 200,
+            "response": {
+              "transaction_id": "b75a80f8-3146-4e7f-b328-e1bf1e815bd8",
+              "success": true
+            },
+            "latency_ms": 66.219
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-82",
+            "status": 200,
+            "response": {
+              "transaction_id": "ddf1e13b-5992-42ca-9403-4c2d12351071",
+              "success": true
+            },
+            "latency_ms": 66.06
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-83",
+            "status": 200,
+            "response": {
+              "transaction_id": "617fc918-9eff-4c95-b332-476d962895bb",
+              "success": true
+            },
+            "latency_ms": 65.275
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-84",
+            "status": 200,
+            "response": {
+              "transaction_id": "afeb0dd4-665e-4514-9d26-9bde83062ae5",
+              "success": true
+            },
+            "latency_ms": 64.815
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-85",
+            "status": 200,
+            "response": {
+              "transaction_id": "fe3cd637-a4a6-4c54-b3b8-60c0656de865",
+              "success": true
+            },
+            "latency_ms": 64.832
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-86",
+            "status": 200,
+            "response": {
+              "transaction_id": "21197438-27bb-4d58-9da4-75e590bd70c5",
+              "success": true
+            },
+            "latency_ms": 66.336
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-87",
+            "status": 200,
+            "response": {
+              "transaction_id": "b97d59c5-568d-4bea-a969-4eba656d34a8",
+              "success": true
+            },
+            "latency_ms": 65.637
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-88",
+            "status": 200,
+            "response": {
+              "transaction_id": "7c328e33-d86d-4a4f-ad02-12bc465c506d",
+              "success": true
+            },
+            "latency_ms": 59.427
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-89",
+            "status": 200,
+            "response": {
+              "transaction_id": "5e635c23-c386-4efb-b9db-3903e9b0da2e",
+              "success": true
+            },
+            "latency_ms": 59.348
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-90",
+            "status": 200,
+            "response": {
+              "transaction_id": "df5e4f4c-8c6c-463a-b353-b63242185f8e",
+              "success": true
+            },
+            "latency_ms": 58.021
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-91",
+            "status": 200,
+            "response": {
+              "transaction_id": "bac336e4-42db-4a3d-802a-d5edc1533f07",
+              "success": true
+            },
+            "latency_ms": 57.0
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-92",
+            "status": 200,
+            "response": {
+              "transaction_id": "fa55a968-cb8a-45c9-a6b2-43076efc754a",
+              "success": true
+            },
+            "latency_ms": 56.296
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-93",
+            "status": 200,
+            "response": {
+              "transaction_id": "e5a36f63-b64c-40ca-bac7-49f16c6c2a99",
+              "success": true
+            },
+            "latency_ms": 53.23
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-94",
+            "status": 200,
+            "response": {
+              "transaction_id": "f7fc7133-9c24-4e60-a643-642840459133",
+              "success": true
+            },
+            "latency_ms": 56.04
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-95",
+            "status": 200,
+            "response": {
+              "transaction_id": "88c8a6a4-38a6-4fa0-b4dd-c66e94717fcb",
+              "success": true
+            },
+            "latency_ms": 55.556
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-96",
+            "status": 200,
+            "response": {
+              "transaction_id": "d74d8590-e32f-4eeb-bd69-6f6639a14aa2",
+              "success": true
+            },
+            "latency_ms": 54.305
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-97",
+            "status": 200,
+            "response": {
+              "transaction_id": "111a7187-85d8-4e4c-a228-b25175c20d0f",
+              "success": true
+            },
+            "latency_ms": 52.75
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-98",
+            "status": 200,
+            "response": {
+              "transaction_id": "8e457afb-7727-4551-a24b-3a0cc1b683a0",
+              "success": true
+            },
+            "latency_ms": 52.112
+          },
+          {
+            "key": "stock-2dd697708fba-r1-baseline-99",
+            "status": 200,
+            "response": {
+              "transaction_id": "e5bebc8d-0aad-4820-85ee-856f314d9811",
+              "success": true
+            },
+            "latency_ms": 52.05
+          }
+        ],
+        "option_id": "defe794d-f91a-4e8e-bb03-a0991c510827"
+      },
+      "outbox": {
+        "summary": {
+          "status_counts": {
+            "200": 60,
+            "409": 40
+          },
+          "accepted_orders": 60,
+          "rejected_insufficient": 40,
+          "accepted_over_available_stock": 0,
+          "persisted_orders": 60,
+          "persisted_orders_over_available_stock": 0,
+          "final_stock": 0.0,
+          "expected_stock_from_persisted_orders": 0,
+          "stock_arithmetic_mismatch": false,
+          "item_rows_including_seed": 61,
+          "external_applications": 60,
+          "request_wall_ms": 129.494,
+          "p95_request_ms": 51.576
+        },
+        "requests": [
+          {
+            "key": "stock-2dd697708fba-r1-outbox-0",
+            "status": 200,
+            "response": {
+              "transaction_id": "c72782fe-c50f-41b4-9b93-3e7a73923749",
+              "success": true
+            },
+            "latency_ms": 11.803
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-1",
+            "status": 200,
+            "response": {
+              "transaction_id": "b822487f-895e-4ec9-8b96-06ced4dc1d75",
+              "success": true
+            },
+            "latency_ms": 13.179
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-2",
+            "status": 200,
+            "response": {
+              "transaction_id": "e9b135fd-5205-4a57-86df-7876e37e903d",
+              "success": true
+            },
+            "latency_ms": 8.553
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-3",
+            "status": 200,
+            "response": {
+              "transaction_id": "9603c3cf-7610-49c3-b95e-6bc3b6ec1c1e",
+              "success": true
+            },
+            "latency_ms": 14.445
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-4",
+            "status": 200,
+            "response": {
+              "transaction_id": "5452f14d-fe06-45b3-bfa5-e42b4523d505",
+              "success": true
+            },
+            "latency_ms": 15.804
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-5",
+            "status": 200,
+            "response": {
+              "transaction_id": "92236032-bde2-408c-a208-72c1f03bad2a",
+              "success": true
+            },
+            "latency_ms": 20.638
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-6",
+            "status": 200,
+            "response": {
+              "transaction_id": "a3fe91fc-8a90-46d9-b171-d66cbe2e55e8",
+              "success": true
+            },
+            "latency_ms": 25.246
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-7",
+            "status": 200,
+            "response": {
+              "transaction_id": "85725e99-66f3-4816-8676-04f5eef3a2a9",
+              "success": true
+            },
+            "latency_ms": 18.471
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-8",
+            "status": 200,
+            "response": {
+              "transaction_id": "12eb00e5-7123-4738-bce3-927326cfde9d",
+              "success": true
+            },
+            "latency_ms": 16.482
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-9",
+            "status": 200,
+            "response": {
+              "transaction_id": "be4f0d04-8b76-46e8-a85d-dd56a2ffad42",
+              "success": true
+            },
+            "latency_ms": 26.182
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-10",
+            "status": 200,
+            "response": {
+              "transaction_id": "5cbf8846-0018-4de2-a231-03927246c79f",
+              "success": true
+            },
+            "latency_ms": 28.85
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-11",
+            "status": 200,
+            "response": {
+              "transaction_id": "1f303b89-2157-4f3b-ad81-88a17286d38f",
+              "success": true
+            },
+            "latency_ms": 27.133
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-12",
+            "status": 200,
+            "response": {
+              "transaction_id": "6531b8be-d6ee-4944-83df-b5172723a592",
+              "success": true
+            },
+            "latency_ms": 45.688
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-13",
+            "status": 200,
+            "response": {
+              "transaction_id": "50b257bd-3358-47b7-8c76-81a3a5139c56",
+              "success": true
+            },
+            "latency_ms": 20.458
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-14",
+            "status": 200,
+            "response": {
+              "transaction_id": "ab414018-e480-43a8-b3d7-240998655661",
+              "success": true
+            },
+            "latency_ms": 31.879
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-15",
+            "status": 200,
+            "response": {
+              "transaction_id": "2cb2bb63-42c3-4063-a158-341f81d20393",
+              "success": true
+            },
+            "latency_ms": 33.233
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-16",
+            "status": 200,
+            "response": {
+              "transaction_id": "c21b25b9-fdb4-40b6-a1ef-591b6cdbd9b3",
+              "success": true
+            },
+            "latency_ms": 63.336
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-17",
+            "status": 200,
+            "response": {
+              "transaction_id": "a0fa22be-3124-47df-8f9c-88942004e984",
+              "success": true
+            },
+            "latency_ms": 36.479
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-18",
+            "status": 200,
+            "response": {
+              "transaction_id": "0545f626-8597-4e12-adb7-2d590af2fb6b",
+              "success": true
+            },
+            "latency_ms": 28.95
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-19",
+            "status": 200,
+            "response": {
+              "transaction_id": "8a2004e9-dc89-4a01-915a-2a0216232700",
+              "success": true
+            },
+            "latency_ms": 45.711
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-20",
+            "status": 200,
+            "response": {
+              "transaction_id": "b40048d4-5af5-4a46-a49e-214735aa4a42",
+              "success": true
+            },
+            "latency_ms": 42.224
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-21",
+            "status": 200,
+            "response": {
+              "transaction_id": "bf80ea41-0d33-4b2d-a10d-2f01266f00c5",
+              "success": true
+            },
+            "latency_ms": 40.133
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-22",
+            "status": 200,
+            "response": {
+              "transaction_id": "4b4bee2c-6c8c-4fef-ba8f-f25a98fc9b1d",
+              "success": true
+            },
+            "latency_ms": 36.841
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-23",
+            "status": 200,
+            "response": {
+              "transaction_id": "de92a9ff-d1b0-47cd-a27c-049474f0a9e6",
+              "success": true
+            },
+            "latency_ms": 33.088
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-24",
+            "status": 200,
+            "response": {
+              "transaction_id": "001db1be-a096-4ade-9d0b-c555b4948bea",
+              "success": true
+            },
+            "latency_ms": 38.138
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-25",
+            "status": 200,
+            "response": {
+              "transaction_id": "9c117be6-408e-4a0e-b9d5-f5ae228c15d8",
+              "success": true
+            },
+            "latency_ms": 49.152
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-26",
+            "status": 200,
+            "response": {
+              "transaction_id": "632ea24e-a25a-4b7e-8519-036dd8a4f145",
+              "success": true
+            },
+            "latency_ms": 45.784
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-27",
+            "status": 200,
+            "response": {
+              "transaction_id": "fccd0132-e4f4-4603-9556-028e13598701",
+              "success": true
+            },
+            "latency_ms": 50.159
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-28",
+            "status": 200,
+            "response": {
+              "transaction_id": "0b1c2ff8-fce9-4842-bab6-53cb9f45b062",
+              "success": true
+            },
+            "latency_ms": 18.77
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-29",
+            "status": 200,
+            "response": {
+              "transaction_id": "f61968f7-2322-478d-9b32-50e3f8da0500",
+              "success": true
+            },
+            "latency_ms": 46.444
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-30",
+            "status": 200,
+            "response": {
+              "transaction_id": "c09cf772-7f1e-424d-845b-fe82e809862d",
+              "success": true
+            },
+            "latency_ms": 48.979
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-31",
+            "status": 200,
+            "response": {
+              "transaction_id": "c94f3147-5c01-4899-a49a-ccd3beda9cf2",
+              "success": true
+            },
+            "latency_ms": 48.073
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-32",
+            "status": 200,
+            "response": {
+              "transaction_id": "499eec6d-b692-48ef-ab62-713764aa8c44",
+              "success": true
+            },
+            "latency_ms": 47.94
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-33",
+            "status": 200,
+            "response": {
+              "transaction_id": "d50e69c9-8894-44b0-85e6-c6e4fefc5d27",
+              "success": true
+            },
+            "latency_ms": 47.816
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-34",
+            "status": 200,
+            "response": {
+              "transaction_id": "32b3a4f6-d9ab-4a8d-ac12-38601d94d76f",
+              "success": true
+            },
+            "latency_ms": 48.384
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-35",
+            "status": 200,
+            "response": {
+              "transaction_id": "2d880fa7-32af-481a-a0b4-ec9dd665bf4e",
+              "success": true
+            },
+            "latency_ms": 50.11
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-36",
+            "status": 200,
+            "response": {
+              "transaction_id": "bfc44de6-08a3-4bcc-96ca-8b4968772540",
+              "success": true
+            },
+            "latency_ms": 50.156
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-37",
+            "status": 200,
+            "response": {
+              "transaction_id": "cf3f20e6-3beb-4153-b602-8a14294ab44b",
+              "success": true
+            },
+            "latency_ms": 50.523
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-38",
+            "status": 200,
+            "response": {
+              "transaction_id": "bf65d57b-a7b7-456a-bf61-9374a56cb2b9",
+              "success": true
+            },
+            "latency_ms": 51.262
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-39",
+            "status": 200,
+            "response": {
+              "transaction_id": "2bfe4a01-87f7-427f-b08e-232b3ddad2ef",
+              "success": true
+            },
+            "latency_ms": 51.074
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-40",
+            "status": 200,
+            "response": {
+              "transaction_id": "1b251765-15f2-4508-a78c-ce6355045da6",
+              "success": true
+            },
+            "latency_ms": 51.668
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-41",
+            "status": 200,
+            "response": {
+              "transaction_id": "1f28c300-fff2-4046-a408-db2bed82ef22",
+              "success": true
+            },
+            "latency_ms": 51.262
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-42",
+            "status": 200,
+            "response": {
+              "transaction_id": "1eef2d85-0569-4cf4-b783-24b64a6e6d9d",
+              "success": true
+            },
+            "latency_ms": 51.589
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-43",
+            "status": 200,
+            "response": {
+              "transaction_id": "d245ec9e-8998-4e69-b59d-2ceaec18cd86",
+              "success": true
+            },
+            "latency_ms": 51.869
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-44",
+            "status": 200,
+            "response": {
+              "transaction_id": "fc6641d3-bb10-4131-b915-69fa5092f5d3",
+              "success": true
+            },
+            "latency_ms": 51.702
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-45",
+            "status": 200,
+            "response": {
+              "transaction_id": "f4347203-747d-4f0e-bdc7-1ac15a2251a9",
+              "success": true
+            },
+            "latency_ms": 51.27
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-46",
+            "status": 200,
+            "response": {
+              "transaction_id": "8642e6ee-457b-4b3f-954b-ad8dd47dc6ce",
+              "success": true
+            },
+            "latency_ms": 51.576
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-47",
+            "status": 200,
+            "response": {
+              "transaction_id": "54a2449a-13d6-4a17-b717-d97d49ca8f11",
+              "success": true
+            },
+            "latency_ms": 51.21
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-48",
+            "status": 200,
+            "response": {
+              "transaction_id": "ae7fa1c7-e1b9-428e-b62a-58faacd185c1",
+              "success": true
+            },
+            "latency_ms": 50.611
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-49",
+            "status": 200,
+            "response": {
+              "transaction_id": "43c36d9e-708f-410f-a398-10522cdce3db",
+              "success": true
+            },
+            "latency_ms": 50.521
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-50",
+            "status": 200,
+            "response": {
+              "transaction_id": "cc2f22e5-480f-4068-bfe2-86f953699114",
+              "success": true
+            },
+            "latency_ms": 50.447
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-51",
+            "status": 200,
+            "response": {
+              "transaction_id": "5a4799bb-49f9-4e5c-8b9c-7c93022e407b",
+              "success": true
+            },
+            "latency_ms": 50.506
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-52",
+            "status": 200,
+            "response": {
+              "transaction_id": "bc1979f2-04b4-4bc7-9793-3a24297842c3",
+              "success": true
+            },
+            "latency_ms": 50.159
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-53",
+            "status": 200,
+            "response": {
+              "transaction_id": "4db0379b-66b5-469a-82fc-69fdd12dc6a2",
+              "success": true
+            },
+            "latency_ms": 50.364
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-54",
+            "status": 200,
+            "response": {
+              "transaction_id": "b0049dc1-0195-42f0-8ab6-eda28376f0c1",
+              "success": true
+            },
+            "latency_ms": 50.525
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-55",
+            "status": 200,
+            "response": {
+              "transaction_id": "bb322812-18f3-4d51-be6e-241de88e2266",
+              "success": true
+            },
+            "latency_ms": 50.344
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-56",
+            "status": 200,
+            "response": {
+              "transaction_id": "000efe5e-4b99-4099-a784-a54bdcfd517c",
+              "success": true
+            },
+            "latency_ms": 50.528
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-57",
+            "status": 200,
+            "response": {
+              "transaction_id": "e5362bbf-e178-4190-982b-35367bc0c512",
+              "success": true
+            },
+            "latency_ms": 50.504
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-58",
+            "status": 200,
+            "response": {
+              "transaction_id": "5e147c11-1b1c-425e-9a71-d7a4e780cebf",
+              "success": true
+            },
+            "latency_ms": 50.367
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-59",
+            "status": 200,
+            "response": {
+              "transaction_id": "4589e5cd-5c63-4a97-be71-e7bc8097fc6f",
+              "success": true
+            },
+            "latency_ms": 50.306
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-60",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 48.805
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-61",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 47.998
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-62",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 46.882
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-63",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 45.972
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-64",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 44.528
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-65",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 44.379
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-66",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 42.42
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-67",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 40.886
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-68",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 49.345
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-69",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 38.458
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-70",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 37.209
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-71",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 36.269
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-72",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 34.298
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-73",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 41.98
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-74",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 32.526
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-75",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 30.902
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-76",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 29.951
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-77",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 29.361
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-78",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 28.205
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-79",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 27.818
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-80",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 25.236
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-81",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 31.59
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-82",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 24.41
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-83",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 21.711
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-84",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 21.493
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-85",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 20.314
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-86",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 18.764
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-87",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 17.559
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-88",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 9.134
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-89",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 15.864
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-90",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 15.505
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-91",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 6.921
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-92",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 15.51
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-93",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 14.819
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-94",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 15.117
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-95",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 15.106
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-96",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 7.739
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-97",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 12.757
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-98",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 13.176
+          },
+          {
+            "key": "stock-2dd697708fba-r1-outbox-99",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 12.631
+          }
+        ],
+        "option_id": "a072010d-9767-4485-8461-01e608f4fb9a"
+      }
+    },
+    {
+      "baseline": {
+        "summary": {
+          "status_counts": {
+            "200": 100
+          },
+          "accepted_orders": 100,
+          "rejected_insufficient": 0,
+          "accepted_over_available_stock": 40,
+          "persisted_orders": 100,
+          "persisted_orders_over_available_stock": 40,
+          "final_stock": -2.0,
+          "expected_stock_from_persisted_orders": -40,
+          "stock_arithmetic_mismatch": true,
+          "item_rows_including_seed": 101,
+          "external_applications": 100,
+          "request_wall_ms": 265.733,
+          "p95_request_ms": 81.194
+        },
+        "requests": [
+          {
+            "key": "stock-2dd697708fba-r2-baseline-0",
+            "status": 200,
+            "response": {
+              "transaction_id": "79adeda8-cc3c-4ac2-9998-e99c30139f57",
+              "success": true
+            },
+            "latency_ms": 27.01
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-1",
+            "status": 200,
+            "response": {
+              "transaction_id": "5fd1fdb2-17dd-4a20-839c-c26267129912",
+              "success": true
+            },
+            "latency_ms": 59.671
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-2",
+            "status": 200,
+            "response": {
+              "transaction_id": "7e1c8fa5-77f9-4aa8-a8d2-d2e3665282f2",
+              "success": true
+            },
+            "latency_ms": 19.813
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-3",
+            "status": 200,
+            "response": {
+              "transaction_id": "b298e733-f39c-488c-83c3-162ce426eaeb",
+              "success": true
+            },
+            "latency_ms": 16.43
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-4",
+            "status": 200,
+            "response": {
+              "transaction_id": "2bad9a38-4b88-451e-ac5f-aaa8bfe0248c",
+              "success": true
+            },
+            "latency_ms": 29.405
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-5",
+            "status": 200,
+            "response": {
+              "transaction_id": "173ddc13-2f94-44b4-be21-4c7abf010106",
+              "success": true
+            },
+            "latency_ms": 36.736
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-6",
+            "status": 200,
+            "response": {
+              "transaction_id": "13bd4602-1549-451e-aad3-540d66b4efd3",
+              "success": true
+            },
+            "latency_ms": 80.207
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-7",
+            "status": 200,
+            "response": {
+              "transaction_id": "5442e6fa-e432-4268-95ad-2a5240a46ecf",
+              "success": true
+            },
+            "latency_ms": 22.076
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-8",
+            "status": 200,
+            "response": {
+              "transaction_id": "c15fcdc3-70a5-419c-8d72-86ab020c7846",
+              "success": true
+            },
+            "latency_ms": 38.177
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-9",
+            "status": 200,
+            "response": {
+              "transaction_id": "35de3724-0855-4269-903b-49ebd63120e1",
+              "success": true
+            },
+            "latency_ms": 31.725
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-10",
+            "status": 200,
+            "response": {
+              "transaction_id": "9527d08c-0d73-406c-b952-a35d67af3f4c",
+              "success": true
+            },
+            "latency_ms": 80.261
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-11",
+            "status": 200,
+            "response": {
+              "transaction_id": "4185e1cb-8e6b-40e2-8965-ccf461fba59e",
+              "success": true
+            },
+            "latency_ms": 84.902
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-12",
+            "status": 200,
+            "response": {
+              "transaction_id": "fafc0e07-926f-4f99-a67c-2d307a234b8c",
+              "success": true
+            },
+            "latency_ms": 48.592
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-13",
+            "status": 200,
+            "response": {
+              "transaction_id": "9b74c1ab-747f-4fd6-b638-7d5969a4a9ef",
+              "success": true
+            },
+            "latency_ms": 44.966
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-14",
+            "status": 200,
+            "response": {
+              "transaction_id": "a48e4536-c8e9-4a7d-b6c2-ec33029accb7",
+              "success": true
+            },
+            "latency_ms": 50.287
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-15",
+            "status": 200,
+            "response": {
+              "transaction_id": "237eaaa1-a78d-4412-899d-d33da2f8e7da",
+              "success": true
+            },
+            "latency_ms": 65.643
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-16",
+            "status": 200,
+            "response": {
+              "transaction_id": "5d9d79b3-b3c3-4191-97b7-d93a69dd3c8a",
+              "success": true
+            },
+            "latency_ms": 39.544
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-17",
+            "status": 200,
+            "response": {
+              "transaction_id": "5ee1c113-4e81-4dce-bfd4-adac73135e96",
+              "success": true
+            },
+            "latency_ms": 64.905
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-18",
+            "status": 200,
+            "response": {
+              "transaction_id": "c5e9aaac-412a-4008-968e-6fe9c254de90",
+              "success": true
+            },
+            "latency_ms": 57.207
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-19",
+            "status": 200,
+            "response": {
+              "transaction_id": "648bf037-3885-41be-8186-3c140972326d",
+              "success": true
+            },
+            "latency_ms": 52.043
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-20",
+            "status": 200,
+            "response": {
+              "transaction_id": "317feb28-dfaf-46ef-a510-ee64b97d1ec4",
+              "success": true
+            },
+            "latency_ms": 66.736
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-21",
+            "status": 200,
+            "response": {
+              "transaction_id": "6d12c586-f599-4b4f-b5c7-5da0a88b6e99",
+              "success": true
+            },
+            "latency_ms": 68.508
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-22",
+            "status": 200,
+            "response": {
+              "transaction_id": "006a0408-c257-47c1-a3f5-27a56a2725f1",
+              "success": true
+            },
+            "latency_ms": 75.916
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-23",
+            "status": 200,
+            "response": {
+              "transaction_id": "d3602d40-fe82-478c-8b93-3f3d4a3b6b46",
+              "success": true
+            },
+            "latency_ms": 40.66
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-24",
+            "status": 200,
+            "response": {
+              "transaction_id": "0c3d22e7-13d7-4bf0-8da5-eba1b4ff9c54",
+              "success": true
+            },
+            "latency_ms": 55.845
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-25",
+            "status": 200,
+            "response": {
+              "transaction_id": "d5e4f196-bebf-4f2f-ae87-74ed33815820",
+              "success": true
+            },
+            "latency_ms": 46.434
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-26",
+            "status": 200,
+            "response": {
+              "transaction_id": "54c9aba0-9ede-4606-b38b-443b7ebbb5ca",
+              "success": true
+            },
+            "latency_ms": 79.745
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-27",
+            "status": 200,
+            "response": {
+              "transaction_id": "0af81bec-e4e6-4839-8e16-7cc9cc7196a8",
+              "success": true
+            },
+            "latency_ms": 85.583
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-28",
+            "status": 200,
+            "response": {
+              "transaction_id": "974f196f-34ed-42fa-9f3f-1ad5dd7705a6",
+              "success": true
+            },
+            "latency_ms": 67.891
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-29",
+            "status": 200,
+            "response": {
+              "transaction_id": "3e5312e7-511d-4161-930a-5927cdf56624",
+              "success": true
+            },
+            "latency_ms": 97.41
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-30",
+            "status": 200,
+            "response": {
+              "transaction_id": "44206f95-344f-42a7-ac17-d761d6275963",
+              "success": true
+            },
+            "latency_ms": 75.949
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-31",
+            "status": 200,
+            "response": {
+              "transaction_id": "7180da48-dcd4-499e-b600-b36d39dfd412",
+              "success": true
+            },
+            "latency_ms": 77.613
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-32",
+            "status": 200,
+            "response": {
+              "transaction_id": "c972c55b-9eb9-48f9-b4a7-1da27a9f68c0",
+              "success": true
+            },
+            "latency_ms": 87.915
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-33",
+            "status": 200,
+            "response": {
+              "transaction_id": "156e9bf0-16ce-4b8b-9827-46a648861cb2",
+              "success": true
+            },
+            "latency_ms": 87.947
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-34",
+            "status": 200,
+            "response": {
+              "transaction_id": "73184345-3b84-4113-9f59-d6fee1ebd083",
+              "success": true
+            },
+            "latency_ms": 71.823
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-35",
+            "status": 200,
+            "response": {
+              "transaction_id": "ce4b0de6-6e79-4a43-8b54-348fc9056b71",
+              "success": true
+            },
+            "latency_ms": 64.873
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-36",
+            "status": 200,
+            "response": {
+              "transaction_id": "db832b81-56c6-4200-b1bb-aec7ec6ee8d6",
+              "success": true
+            },
+            "latency_ms": 68.535
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-37",
+            "status": 200,
+            "response": {
+              "transaction_id": "1241ee41-2d74-4925-a0a6-502b54e60e29",
+              "success": true
+            },
+            "latency_ms": 76.542
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-38",
+            "status": 200,
+            "response": {
+              "transaction_id": "b914840c-449f-4f0e-b0d0-a44d73353984",
+              "success": true
+            },
+            "latency_ms": 74.301
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-39",
+            "status": 200,
+            "response": {
+              "transaction_id": "9357ee82-03ee-4d9e-9824-1aadf483788b",
+              "success": true
+            },
+            "latency_ms": 73.899
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-40",
+            "status": 200,
+            "response": {
+              "transaction_id": "1686be9c-3c8c-4b54-979f-54c9e5e99147",
+              "success": true
+            },
+            "latency_ms": 73.985
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-41",
+            "status": 200,
+            "response": {
+              "transaction_id": "5e6c21f2-4e93-41b9-b78a-b0aa1a9609e8",
+              "success": true
+            },
+            "latency_ms": 75.089
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-42",
+            "status": 200,
+            "response": {
+              "transaction_id": "c7c64ee3-3e97-4be0-8c6a-7a2c7a252cf8",
+              "success": true
+            },
+            "latency_ms": 75.551
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-43",
+            "status": 200,
+            "response": {
+              "transaction_id": "61a6d1d2-498e-448e-ba33-77e7ccd87dd9",
+              "success": true
+            },
+            "latency_ms": 74.729
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-44",
+            "status": 200,
+            "response": {
+              "transaction_id": "c4dd877a-b36d-4fe1-9302-400bae8ec352",
+              "success": true
+            },
+            "latency_ms": 76.671
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-45",
+            "status": 200,
+            "response": {
+              "transaction_id": "87a22731-48e0-4ce1-a016-5af9aa51fabe",
+              "success": true
+            },
+            "latency_ms": 77.037
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-46",
+            "status": 200,
+            "response": {
+              "transaction_id": "60a21a78-0829-41c3-8aa2-07c0fcadd1c0",
+              "success": true
+            },
+            "latency_ms": 76.168
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-47",
+            "status": 200,
+            "response": {
+              "transaction_id": "83ebf91b-e536-4a74-a79d-9d192f4b0798",
+              "success": true
+            },
+            "latency_ms": 76.023
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-48",
+            "status": 200,
+            "response": {
+              "transaction_id": "808cce63-e7cc-4e01-b8cc-5fa679431a9e",
+              "success": true
+            },
+            "latency_ms": 72.322
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-49",
+            "status": 200,
+            "response": {
+              "transaction_id": "9248e29c-7ef9-4bc8-a59e-995d79690eec",
+              "success": true
+            },
+            "latency_ms": 74.376
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-50",
+            "status": 200,
+            "response": {
+              "transaction_id": "e205d70e-dccd-473e-8ea9-a3d887ea2912",
+              "success": true
+            },
+            "latency_ms": 74.117
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-51",
+            "status": 200,
+            "response": {
+              "transaction_id": "3e0b62c0-8a56-464d-9164-bf719add6187",
+              "success": true
+            },
+            "latency_ms": 72.893
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-52",
+            "status": 200,
+            "response": {
+              "transaction_id": "e4ceee85-49d6-49ac-a01b-a315d497901b",
+              "success": true
+            },
+            "latency_ms": 76.805
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-53",
+            "status": 200,
+            "response": {
+              "transaction_id": "ca20babe-7f85-4c96-9957-e30f99f834fa",
+              "success": true
+            },
+            "latency_ms": 77.912
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-54",
+            "status": 200,
+            "response": {
+              "transaction_id": "f7739116-001e-42e7-b54b-aa1034ba9609",
+              "success": true
+            },
+            "latency_ms": 77.358
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-55",
+            "status": 200,
+            "response": {
+              "transaction_id": "00804785-e8d2-488d-bd44-3e73c4059c15",
+              "success": true
+            },
+            "latency_ms": 80.47
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-56",
+            "status": 200,
+            "response": {
+              "transaction_id": "1c73e85f-8b5a-4d94-88e4-f880df5766b0",
+              "success": true
+            },
+            "latency_ms": 79.578
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-57",
+            "status": 200,
+            "response": {
+              "transaction_id": "77b4d370-31e6-410d-b707-d4c42ee9c799",
+              "success": true
+            },
+            "latency_ms": 79.115
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-58",
+            "status": 200,
+            "response": {
+              "transaction_id": "2e8975dd-8252-46b4-8720-a95d3466a916",
+              "success": true
+            },
+            "latency_ms": 78.66
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-59",
+            "status": 200,
+            "response": {
+              "transaction_id": "92e00868-a034-407e-adad-087548a2fe1c",
+              "success": true
+            },
+            "latency_ms": 79.49
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-60",
+            "status": 200,
+            "response": {
+              "transaction_id": "bcb4ca6a-0aa1-407f-8c6f-2473e14a0d1b",
+              "success": true
+            },
+            "latency_ms": 78.607
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-61",
+            "status": 200,
+            "response": {
+              "transaction_id": "3f24e797-a529-4ef0-abff-e653ea00371b",
+              "success": true
+            },
+            "latency_ms": 80.14
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-62",
+            "status": 200,
+            "response": {
+              "transaction_id": "f23a1c2f-29e5-4df9-8c1b-4b76c714a4db",
+              "success": true
+            },
+            "latency_ms": 81.194
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-63",
+            "status": 200,
+            "response": {
+              "transaction_id": "ea6203f4-2262-4155-90bb-56862b31ae3c",
+              "success": true
+            },
+            "latency_ms": 78.616
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-64",
+            "status": 200,
+            "response": {
+              "transaction_id": "f74d0aec-078b-4811-bc92-1a59745f29b4",
+              "success": true
+            },
+            "latency_ms": 78.242
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-65",
+            "status": 200,
+            "response": {
+              "transaction_id": "250449b9-9c9d-44e0-981f-4bbf78414e73",
+              "success": true
+            },
+            "latency_ms": 80.189
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-66",
+            "status": 200,
+            "response": {
+              "transaction_id": "b1678fb8-0ec3-4e04-b91e-848099673edf",
+              "success": true
+            },
+            "latency_ms": 79.187
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-67",
+            "status": 200,
+            "response": {
+              "transaction_id": "2dd8eb28-7bf1-4474-867b-57edfa0dedf7",
+              "success": true
+            },
+            "latency_ms": 78.207
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-68",
+            "status": 200,
+            "response": {
+              "transaction_id": "443de5c7-2459-4dd4-a236-7d081f4debe8",
+              "success": true
+            },
+            "latency_ms": 79.471
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-69",
+            "status": 200,
+            "response": {
+              "transaction_id": "8eba55eb-f9b9-4abe-9521-d162ee639e23",
+              "success": true
+            },
+            "latency_ms": 79.138
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-70",
+            "status": 200,
+            "response": {
+              "transaction_id": "9d1e976e-ef7d-4f75-b22c-a3a30efcd2d4",
+              "success": true
+            },
+            "latency_ms": 80.609
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-71",
+            "status": 200,
+            "response": {
+              "transaction_id": "eb944b34-ecf6-4eda-a665-1ba4d0a28d5c",
+              "success": true
+            },
+            "latency_ms": 80.398
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-72",
+            "status": 200,
+            "response": {
+              "transaction_id": "c6fdc055-6e26-4cdb-8946-c7f9e5cfecd8",
+              "success": true
+            },
+            "latency_ms": 79.73
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-73",
+            "status": 200,
+            "response": {
+              "transaction_id": "fa02e210-dcba-4a06-ac3f-1afce961be26",
+              "success": true
+            },
+            "latency_ms": 79.36
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-74",
+            "status": 200,
+            "response": {
+              "transaction_id": "9c982ceb-e858-4930-9bcb-0e3c1496c5c3",
+              "success": true
+            },
+            "latency_ms": 78.25
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-75",
+            "status": 200,
+            "response": {
+              "transaction_id": "7bd69af0-94e3-4ae5-baae-cdabca3c6edc",
+              "success": true
+            },
+            "latency_ms": 77.63
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-76",
+            "status": 200,
+            "response": {
+              "transaction_id": "6d2ac52c-c554-4fcc-b77c-98d7053b12b5",
+              "success": true
+            },
+            "latency_ms": 77.165
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-77",
+            "status": 200,
+            "response": {
+              "transaction_id": "0ac81e50-e304-4eeb-adc1-f167cb4158c7",
+              "success": true
+            },
+            "latency_ms": 75.894
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-78",
+            "status": 200,
+            "response": {
+              "transaction_id": "16f1f85a-19d9-4382-9340-107cbafba4ab",
+              "success": true
+            },
+            "latency_ms": 77.682
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-79",
+            "status": 200,
+            "response": {
+              "transaction_id": "8d2f1e3d-cba8-4ebd-8ca8-c234134f36dd",
+              "success": true
+            },
+            "latency_ms": 77.162
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-80",
+            "status": 200,
+            "response": {
+              "transaction_id": "0065b8b1-6b26-46cf-92de-7d2c2e02f2f4",
+              "success": true
+            },
+            "latency_ms": 75.182
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-81",
+            "status": 200,
+            "response": {
+              "transaction_id": "61a7d16f-c072-4577-aa83-8b56671bdd75",
+              "success": true
+            },
+            "latency_ms": 74.907
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-82",
+            "status": 200,
+            "response": {
+              "transaction_id": "0b6aa747-d97d-421a-9be6-ff75305776fb",
+              "success": true
+            },
+            "latency_ms": 70.596
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-83",
+            "status": 200,
+            "response": {
+              "transaction_id": "8b123ace-bc15-485e-8380-585b0ae99b29",
+              "success": true
+            },
+            "latency_ms": 68.379
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-84",
+            "status": 200,
+            "response": {
+              "transaction_id": "e2485c8e-44b1-45a0-bf5b-382c2d724f6b",
+              "success": true
+            },
+            "latency_ms": 69.567
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-85",
+            "status": 200,
+            "response": {
+              "transaction_id": "1b643463-0aa4-4717-9f63-9e1ab6ac2817",
+              "success": true
+            },
+            "latency_ms": 66.482
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-86",
+            "status": 200,
+            "response": {
+              "transaction_id": "45e12861-975a-42f0-a714-419a0302e275",
+              "success": true
+            },
+            "latency_ms": 66.321
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-87",
+            "status": 200,
+            "response": {
+              "transaction_id": "b0c3e5a8-7655-496c-b0af-eb3e3789aad2",
+              "success": true
+            },
+            "latency_ms": 66.741
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-88",
+            "status": 200,
+            "response": {
+              "transaction_id": "47caa084-3140-4cdc-bda1-9491636b8f5f",
+              "success": true
+            },
+            "latency_ms": 65.972
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-89",
+            "status": 200,
+            "response": {
+              "transaction_id": "c37fa2f1-ab9e-49a0-ad3b-06273b1af35d",
+              "success": true
+            },
+            "latency_ms": 65.577
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-90",
+            "status": 200,
+            "response": {
+              "transaction_id": "b1c00885-e656-4b01-abf2-6bfd75b9177a",
+              "success": true
+            },
+            "latency_ms": 65.855
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-91",
+            "status": 200,
+            "response": {
+              "transaction_id": "f436fd49-1018-42c0-8103-a42074d07d50",
+              "success": true
+            },
+            "latency_ms": 64.579
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-92",
+            "status": 200,
+            "response": {
+              "transaction_id": "e6d56ef5-9576-4570-9c5c-5596a26d8ecb",
+              "success": true
+            },
+            "latency_ms": 62.117
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-93",
+            "status": 200,
+            "response": {
+              "transaction_id": "bf08a33c-7e7a-41c1-a692-2c24ddc8c909",
+              "success": true
+            },
+            "latency_ms": 63.005
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-94",
+            "status": 200,
+            "response": {
+              "transaction_id": "d655f798-bf0d-4e13-b5a5-4e26309a2844",
+              "success": true
+            },
+            "latency_ms": 62.899
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-95",
+            "status": 200,
+            "response": {
+              "transaction_id": "7a997a44-deb7-4ff8-a246-da29f35105eb",
+              "success": true
+            },
+            "latency_ms": 63.74
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-96",
+            "status": 200,
+            "response": {
+              "transaction_id": "bff0cc3d-edb3-4aab-a6bc-80676dd44dc8",
+              "success": true
+            },
+            "latency_ms": 62.819
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-97",
+            "status": 200,
+            "response": {
+              "transaction_id": "18c58822-81d3-4244-b731-7380819593a2",
+              "success": true
+            },
+            "latency_ms": 66.166
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-98",
+            "status": 200,
+            "response": {
+              "transaction_id": "05d8ae95-a896-4601-a160-b9be77635e78",
+              "success": true
+            },
+            "latency_ms": 64.929
+          },
+          {
+            "key": "stock-2dd697708fba-r2-baseline-99",
+            "status": 200,
+            "response": {
+              "transaction_id": "b2898b0b-1413-48fc-8d7d-768282f7f645",
+              "success": true
+            },
+            "latency_ms": 63.015
+          }
+        ],
+        "option_id": "e745a43e-31c3-4254-a0fe-bc36728c121d"
+      },
+      "outbox": {
+        "summary": {
+          "status_counts": {
+            "200": 60,
+            "409": 40
+          },
+          "accepted_orders": 60,
+          "rejected_insufficient": 40,
+          "accepted_over_available_stock": 0,
+          "persisted_orders": 60,
+          "persisted_orders_over_available_stock": 0,
+          "final_stock": 0.0,
+          "expected_stock_from_persisted_orders": 0,
+          "stock_arithmetic_mismatch": false,
+          "item_rows_including_seed": 61,
+          "external_applications": 60,
+          "request_wall_ms": 111.315,
+          "p95_request_ms": 43.907
+        },
+        "requests": [
+          {
+            "key": "stock-2dd697708fba-r2-outbox-0",
+            "status": 200,
+            "response": {
+              "transaction_id": "210dd16f-40a4-4b45-b38c-1a1cd63a6922",
+              "success": true
+            },
+            "latency_ms": 29.597
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-1",
+            "status": 200,
+            "response": {
+              "transaction_id": "c3739284-894a-400c-966b-fd79d298c4f3",
+              "success": true
+            },
+            "latency_ms": 29.83
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-2",
+            "status": 200,
+            "response": {
+              "transaction_id": "315d13da-acf1-424d-9078-9ac8211791b0",
+              "success": true
+            },
+            "latency_ms": 28.911
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-3",
+            "status": 200,
+            "response": {
+              "transaction_id": "a3f7ddc0-1cd5-4641-9077-d190a9f5aa78",
+              "success": true
+            },
+            "latency_ms": 28.171
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-4",
+            "status": 200,
+            "response": {
+              "transaction_id": "c4e4afea-3b05-4e89-82d9-13c4272e3cc1",
+              "success": true
+            },
+            "latency_ms": 29.468
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-5",
+            "status": 200,
+            "response": {
+              "transaction_id": "547ba877-c99c-44d4-8a8a-e73d716a4b42",
+              "success": true
+            },
+            "latency_ms": 28.013
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-6",
+            "status": 200,
+            "response": {
+              "transaction_id": "ec629172-ca6b-4084-9b2e-186b2cc33a1f",
+              "success": true
+            },
+            "latency_ms": 29.673
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-7",
+            "status": 200,
+            "response": {
+              "transaction_id": "7de24c29-a988-4286-99b9-ce32a3275275",
+              "success": true
+            },
+            "latency_ms": 26.548
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-8",
+            "status": 200,
+            "response": {
+              "transaction_id": "83823952-9a5b-4c49-aa4a-53aec8d7cb09",
+              "success": true
+            },
+            "latency_ms": 26.929
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-9",
+            "status": 200,
+            "response": {
+              "transaction_id": "456d9d5c-0a96-4217-8b37-c9605f762206",
+              "success": true
+            },
+            "latency_ms": 28.054
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-10",
+            "status": 200,
+            "response": {
+              "transaction_id": "4024fa61-d37c-419d-82d4-afbe9415da0a",
+              "success": true
+            },
+            "latency_ms": 26.314
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-11",
+            "status": 200,
+            "response": {
+              "transaction_id": "6dc6d7f6-a49b-4ca5-b62f-800866bf9229",
+              "success": true
+            },
+            "latency_ms": 25.84
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-12",
+            "status": 200,
+            "response": {
+              "transaction_id": "0a91bd95-5ad7-420a-95ce-e1a77e3056a8",
+              "success": true
+            },
+            "latency_ms": 28.389
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-13",
+            "status": 200,
+            "response": {
+              "transaction_id": "af2920f1-ca4e-478e-9563-57eb789d2db9",
+              "success": true
+            },
+            "latency_ms": 27.549
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-14",
+            "status": 200,
+            "response": {
+              "transaction_id": "5f75a949-542f-4800-a0a4-0e4ce4224862",
+              "success": true
+            },
+            "latency_ms": 25.77
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-15",
+            "status": 200,
+            "response": {
+              "transaction_id": "d447d2a4-61eb-4a00-bfeb-d6100c990745",
+              "success": true
+            },
+            "latency_ms": 25.281
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-16",
+            "status": 200,
+            "response": {
+              "transaction_id": "849ec628-e889-4d29-83f1-48b789932468",
+              "success": true
+            },
+            "latency_ms": 27.25
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-17",
+            "status": 200,
+            "response": {
+              "transaction_id": "101fba1b-6d8b-4c2a-9911-887501060829",
+              "success": true
+            },
+            "latency_ms": 31.472
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-18",
+            "status": 200,
+            "response": {
+              "transaction_id": "6bc7c92a-1ed0-43ea-b30f-c63c6d38643e",
+              "success": true
+            },
+            "latency_ms": 30.01
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-19",
+            "status": 200,
+            "response": {
+              "transaction_id": "d0ee186d-7d76-47c3-86ef-116125673c14",
+              "success": true
+            },
+            "latency_ms": 33.224
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-20",
+            "status": 200,
+            "response": {
+              "transaction_id": "0aee85f2-36e9-43db-a8c3-4e3114186e73",
+              "success": true
+            },
+            "latency_ms": 34.791
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-21",
+            "status": 200,
+            "response": {
+              "transaction_id": "6b912b23-c2a9-4579-84a3-ea8208800e79",
+              "success": true
+            },
+            "latency_ms": 27.096
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-22",
+            "status": 200,
+            "response": {
+              "transaction_id": "25ee20cc-2a58-4824-9bdd-1d4a78bbfea2",
+              "success": true
+            },
+            "latency_ms": 37.639
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-23",
+            "status": 200,
+            "response": {
+              "transaction_id": "3754da63-5918-43bf-a6f2-c09104e175d6",
+              "success": true
+            },
+            "latency_ms": 38.988
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-24",
+            "status": 200,
+            "response": {
+              "transaction_id": "6f4dec86-9872-44e4-854d-94042c472a7c",
+              "success": true
+            },
+            "latency_ms": 40.31
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-25",
+            "status": 200,
+            "response": {
+              "transaction_id": "252f0fbf-7c94-443b-bf3c-efe8bb73d1f3",
+              "success": true
+            },
+            "latency_ms": 35.499
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-26",
+            "status": 200,
+            "response": {
+              "transaction_id": "2d0cb03c-8fff-4399-9c62-8c44a01760e4",
+              "success": true
+            },
+            "latency_ms": 66.495
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-27",
+            "status": 200,
+            "response": {
+              "transaction_id": "4b3bad45-d812-4ea1-9849-bc743137cd58",
+              "success": true
+            },
+            "latency_ms": 53.827
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-28",
+            "status": 200,
+            "response": {
+              "transaction_id": "2f2c4bc0-74ba-42c0-88dd-c98f3ce97f97",
+              "success": true
+            },
+            "latency_ms": 49.473
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-29",
+            "status": 200,
+            "response": {
+              "transaction_id": "73e39125-7499-40e6-a106-01d3a3f82fea",
+              "success": true
+            },
+            "latency_ms": 57.541
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-30",
+            "status": 200,
+            "response": {
+              "transaction_id": "06f12674-a9c1-489a-98dc-fa1d6b0b9206",
+              "success": true
+            },
+            "latency_ms": 28.97
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-31",
+            "status": 200,
+            "response": {
+              "transaction_id": "f27e8f47-e2af-4a60-8e70-220b841830b9",
+              "success": true
+            },
+            "latency_ms": 24.193
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-32",
+            "status": 200,
+            "response": {
+              "transaction_id": "3b5b2fb8-83a5-4acb-a5ef-b7972f7fdc0f",
+              "success": true
+            },
+            "latency_ms": 29.825
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-33",
+            "status": 200,
+            "response": {
+              "transaction_id": "8055e119-b8b7-4f25-9c81-9ab84a74ca52",
+              "success": true
+            },
+            "latency_ms": 19.682
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-34",
+            "status": 200,
+            "response": {
+              "transaction_id": "500d8889-0cdd-4c8d-bf5f-c42126b34206",
+              "success": true
+            },
+            "latency_ms": 37.771
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-35",
+            "status": 200,
+            "response": {
+              "transaction_id": "6dddbefc-43f2-4515-8968-089c71b2d30f",
+              "success": true
+            },
+            "latency_ms": 22.123
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-36",
+            "status": 200,
+            "response": {
+              "transaction_id": "1a357c0a-2c5a-439b-abe4-93ee6e2b45a3",
+              "success": true
+            },
+            "latency_ms": 35.938
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-37",
+            "status": 200,
+            "response": {
+              "transaction_id": "f9742fb4-a5ab-4c09-85dc-3a535a34b1eb",
+              "success": true
+            },
+            "latency_ms": 41.367
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-38",
+            "status": 200,
+            "response": {
+              "transaction_id": "66562d55-e8c0-4244-8afe-65150553c3a3",
+              "success": true
+            },
+            "latency_ms": 20.367
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-39",
+            "status": 200,
+            "response": {
+              "transaction_id": "ae7c888a-227b-4de7-97a8-521b7ca5160c",
+              "success": true
+            },
+            "latency_ms": 31.311
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-40",
+            "status": 200,
+            "response": {
+              "transaction_id": "a4b366dd-b5cd-40a6-9a7d-4a73afb3d3c4",
+              "success": true
+            },
+            "latency_ms": 24.102
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-41",
+            "status": 200,
+            "response": {
+              "transaction_id": "fd0a37c5-c615-4e6d-9eb3-50b86a554e54",
+              "success": true
+            },
+            "latency_ms": 16.554
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-42",
+            "status": 200,
+            "response": {
+              "transaction_id": "33bdb759-5e61-42a2-857f-e77c8fe0c5cb",
+              "success": true
+            },
+            "latency_ms": 37.57
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-43",
+            "status": 200,
+            "response": {
+              "transaction_id": "c83757e5-e98d-48b7-be5f-2355665b7117",
+              "success": true
+            },
+            "latency_ms": 46.003
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-44",
+            "status": 200,
+            "response": {
+              "transaction_id": "a1fd0ff9-e0f3-4ae7-b6a0-a1adea04c7b1",
+              "success": true
+            },
+            "latency_ms": 31.47
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-45",
+            "status": 200,
+            "response": {
+              "transaction_id": "d79aa1d4-afcd-4ff4-89c5-101d7906956b",
+              "success": true
+            },
+            "latency_ms": 42.192
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-46",
+            "status": 200,
+            "response": {
+              "transaction_id": "542a6315-aee6-4024-b546-e5685160f23b",
+              "success": true
+            },
+            "latency_ms": 37.845
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-47",
+            "status": 200,
+            "response": {
+              "transaction_id": "06df82d0-bf97-4175-a23d-fc2b119200c0",
+              "success": true
+            },
+            "latency_ms": 43.043
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-48",
+            "status": 200,
+            "response": {
+              "transaction_id": "84c98b42-1d25-4d5e-b894-1a33ecd74f10",
+              "success": true
+            },
+            "latency_ms": 43.678
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-49",
+            "status": 200,
+            "response": {
+              "transaction_id": "7024dd97-b210-451a-9804-c643800b55ae",
+              "success": true
+            },
+            "latency_ms": 43.907
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-50",
+            "status": 200,
+            "response": {
+              "transaction_id": "83d8f4a4-baf9-4049-9a64-bef11337efc7",
+              "success": true
+            },
+            "latency_ms": 43.359
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-51",
+            "status": 200,
+            "response": {
+              "transaction_id": "d14f2454-36bb-44fc-80c3-36f11405e4fd",
+              "success": true
+            },
+            "latency_ms": 43.187
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-52",
+            "status": 200,
+            "response": {
+              "transaction_id": "e2def7a3-3495-42b8-9720-a5ad0bc8999e",
+              "success": true
+            },
+            "latency_ms": 43.216
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-53",
+            "status": 200,
+            "response": {
+              "transaction_id": "9ab9bad9-6b88-446c-8457-0b5a57f2febe",
+              "success": true
+            },
+            "latency_ms": 42.906
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-54",
+            "status": 200,
+            "response": {
+              "transaction_id": "fd20c0b8-d8d6-4618-b140-a002438a3b13",
+              "success": true
+            },
+            "latency_ms": 43.092
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-55",
+            "status": 200,
+            "response": {
+              "transaction_id": "96ca7d8b-e0c4-40be-958d-edac4b2276e1",
+              "success": true
+            },
+            "latency_ms": 43.06
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-56",
+            "status": 200,
+            "response": {
+              "transaction_id": "b2291f55-5cde-4588-a7c4-ae258016bb1e",
+              "success": true
+            },
+            "latency_ms": 43.267
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-57",
+            "status": 200,
+            "response": {
+              "transaction_id": "c3dea6f9-a039-401b-ab38-d4ae2a303cfa",
+              "success": true
+            },
+            "latency_ms": 43.197
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-58",
+            "status": 200,
+            "response": {
+              "transaction_id": "81ad1489-0c97-46bd-81cb-247226d56eeb",
+              "success": true
+            },
+            "latency_ms": 43.113
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-59",
+            "status": 200,
+            "response": {
+              "transaction_id": "19814dd0-95e6-4a98-ab1d-b7b0234931ad",
+              "success": true
+            },
+            "latency_ms": 43.277
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-60",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 42.37
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-61",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 41.421
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-62",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 40.454
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-63",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 38.823
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-64",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 39.393
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-65",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 36.82
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-66",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 35.805
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-67",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 35.501
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-68",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 42.697
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-69",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 33.317
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-70",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 32.281
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-71",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 31.496
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-72",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 30.304
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-73",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 29.544
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-74",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 28.542
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-75",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 28.382
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-76",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 25.682
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-77",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 24.812
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-78",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 24.362
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-79",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 29.195
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-80",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 21.95
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-81",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 20.955
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-82",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 25.562
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-83",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 24.409
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-84",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 17.815
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-85",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 16.651
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-86",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 15.543
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-87",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 14.788
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-88",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 4.629
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-89",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 12.132
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-90",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 11.89
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-91",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 12.022
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-92",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 12.752
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-93",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 8.625
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-94",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 11.158
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-95",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 11.962
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-96",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 11.802
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-97",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 6.801
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-98",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 6.25
+          },
+          {
+            "key": "stock-2dd697708fba-r2-outbox-99",
+            "status": 409,
+            "response": {
+              "error": "insufficient stock"
+            },
+            "latency_ms": 11.749
+          }
+        ],
+        "option_id": "ee4b7153-7333-41a0-9601-e582fa8e565e"
+      }
+    }
+  ],
+  "source_sha256": {
+    "src/main/java/com/inventory/InventoryService.java": "8cf19f83bd665fced2314973833efaa5df162c56b64d9d7d63c3da17b5c96145",
+    "src/main/java/com/inventory/InventoryController.java": "2405b94b36f175532d9fddd2165392a5c2ffc6df5fdc92b48e0047e4ff6fd73f",
+    "stock_concurrency_experiment.py": "924be8667acdde6c4a14469a809a8767703614aa73bdc22732721779c65dfb90",
+    "baseline_inventory_writer.sql": "53299b3030a06ad3857b83ef0dcac7ae9908d83b9068a2484ec08467ac996cc3"
+  },
+  "image_ids": {
+    "inventory-reliability-app:latest": "sha256:9373fc5f8e6c09bf38be73efd80496cf0397415431c0c76e40b719643d03e64d",
+    "postgres:17": "sha256:f4c66b820c6f974249089d3d16d86a3698eae11e8746eb6644b2271031e91232",
+    "python:3.12-slim": "sha256:f77ac9e44ae96ef2c90b8053ea08c31f8be030f824196b0ae4db6d462c84e51f"
+  }
+}

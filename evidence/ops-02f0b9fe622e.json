@@ -1,0 +1,198 @@
+{
+  "run_id": "ops-02f0b9fe622e",
+  "timestamp_utc": "2026-10-18T11:40:25.924216+00:00",
+  "scope": "single point in time, local demo only",
+  "instances": {
+    "app1": {
+      "health": {
+        "status": "UP",
+        "groups": [
+          "liveness",
+          "readiness"
+        ]
+      },
+      "metrics/jvm.memory.used": {
+        "name": "jvm.memory.used",
+        "description": "The amount of used memory",
+        "baseUnit": "bytes",
+        "measurements": [
+          {
+            "statistic": "VALUE",
+            "value": 155313848.0
+          }
+        ],
+        "availableTags": [
+          {
+            "tag": "area",
+            "values": [
+              "heap",
+              "nonheap"
+            ]
+          },
+          {
+            "tag": "id",
+            "values": [
+              "CodeHeap 'profiled nmethods'",
+              "G1 Old Gen",
+              "CodeHeap 'non-profiled nmethods'",
+              "G1 Survivor Space",
+              "Compressed Class Space",
+              "Metaspace",
+              "G1 Eden Space",
+              "CodeHeap 'non-nmethods'"
+            ]
+          }
+        ]
+      },
+      "metrics/hikaricp.connections.active": {
+        "name": "hikaricp.connections.active",
+        "description": "Active connections",
+        "measurements": [
+          {
+            "statistic": "VALUE",
+            "value": 0.0
+          }
+        ],
+        "availableTags": [
+          {
+            "tag": "pool",
+            "values": [
+              "HikariPool-1"
+            ]
+          }
+        ]
+      },
+      "metrics/hikaricp.connections.max": {
+        "name": "hikaricp.connections.max",
+        "description": "Max connections",
+        "measurements": [
+          {
+            "statistic": "VALUE",
+            "value": 8.0
+          }
+        ],
+        "availableTags": [
+          {
+            "tag": "pool",
+            "values": [
+              "HikariPool-1"
+            ]
+          }
+        ]
+      }
+    },
+    "app2": {
+      "health": {
+        "status": "UP",
+        "groups": [
+          "liveness",
+          "readiness"
+        ]
+      },
+      "metrics/jvm.memory.used": {
+        "name": "jvm.memory.used",
+        "description": "The amount of used memory",
+        "baseUnit": "bytes",
+        "measurements": [
+          {
+            "statistic": "VALUE",
+            "value": 116201640.0
+          }
+        ],
+        "availableTags": [
+          {
+            "tag": "area",
+            "values": [
+              "heap",
+              "nonheap"
+            ]
+          },
+          {
+            "tag": "id",
+            "values": [
+              "CodeHeap 'profiled nmethods'",
+              "G1 Old Gen",
+              "CodeHeap 'non-profiled nmethods'",
+              "G1 Survivor Space",
+              "Compressed Class Space",
+              "Metaspace",
+              "G1 Eden Space",
+              "CodeHeap 'non-nmethods'"
+            ]
+          }
+        ]
+      },
+      "metrics/hikaricp.connections.active": {
+        "name": "hikaricp.connections.active",
+        "description": "Active connections",
+        "measurements": [
+          {
+            "statistic": "VALUE",
+            "value": 0.0
+          }
+        ],
+        "availableTags": [
+          {
+            "tag": "pool",
+            "values": [
+              "HikariPool-1"
+            ]
+          }
+        ]
+      },
+      "metrics/hikaricp.connections.max": {
+        "name": "hikaricp.connections.max",
+        "description": "Max connections",
+        "measurements": [
+          {
+            "statistic": "VALUE",
+            "value": 8.0
+          }
+        ],
+        "availableTags": [
+          {
+            "tag": "pool",
+            "values": [
+              "HikariPool-1"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "structured_outbox_log_examples": [
+    {
+      "@timestamp": "2026-10-18T11:40:12.146086579Z",
+      "@version": "1",
+      "message": "outbox transition",
+      "logger_name": "com.inventory.InventoryService",
+      "thread_name": "scheduling-1",
+      "level": "INFO",
+      "level_value": 20000,
+      "event_id": "a415ed0c-93d5-4ac0-9bd7-9d3cd6c3fb29",
+      "state": "DONE"
+    },
+    {
+      "@timestamp": "2026-10-18T11:40:12.171954729Z",
+      "@version": "1",
+      "message": "outbox transition",
+      "logger_name": "com.inventory.InventoryService",
+      "thread_name": "scheduling-1",
+      "level": "INFO",
+      "level_value": 20000,
+      "event_id": "2389fd9f-2f62-4549-b425-ea0992042956",
+      "state": "DONE"
+    },
+    {
+      "@timestamp": "2026-10-18T11:40:12.197739882Z",
+      "@version": "1",
+      "message": "outbox transition",
+      "logger_name": "com.inventory.InventoryService",
+      "thread_name": "scheduling-1",
+      "level": "INFO",
+      "level_value": 20000,
+      "event_id": "6c64b571-b100-48c2-8284-9cb80cd9babb",
+      "state": "DONE"
+    }
+  ]
+}
