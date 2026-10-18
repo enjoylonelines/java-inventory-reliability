@@ -6,6 +6,8 @@
 
 **접근:** SKU·창고별 트랜잭션 잠금 및 수량 검사, 요청 키, transactional outbox, lease 기반 재시도와 대사로 실패 경계를 좁힌다. 동일한 가상 입력으로 개선 전후를 비교한다. 실험 내용과 측정 결과는 [RESULTS.md](RESULTS.md)를 참고한다.
 
+후속 업무 모델·Oracle·운영 신뢰성 계획은 [개발 계획](docs/plans/inventory-reliability-roadmap.md)에 정리한다. 계획에 적힌 기능과 측정은 완료된 결과가 아니다.
+
 ## 실행
 
 Docker Compose와 Python 3이 필요하다. 다음 명령은 이 디렉터리에서 실행한다. 로컬 포트 18184–18188과 별도의 명명된 실험 볼륨을 사용한다.
