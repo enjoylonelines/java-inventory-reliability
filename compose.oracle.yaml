@@ -1,0 +1,14 @@
+services:
+  oracle:
+    image: container-registry.oracle.com/database/free@sha256:cf540c3fa190d7cffad08c491652ac07fc70314e510f6b87890449517d565e94
+    environment:
+      ORACLE_PWD: ${ORACLE_PWD:?Set a development-only Oracle password}
+    ports:
+      - "127.0.0.1:${ORACLE_PORT:-11522}:1521"
+    cpus: 2
+    mem_limit: 4g
+    volumes:
+      - oracle-data:/opt/oracle/oradata
+
+volumes:
+  oracle-data:

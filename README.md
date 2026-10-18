@@ -8,6 +8,8 @@
 
 Oracle 업무 흐름, 실행 조건과 미완료 사항은 [Oracle 구현 안내](docs/oracle-workflow.md)에 정리했다. [개발 계획](docs/plans/inventory-reliability-roadmap.md)의 목표와 수용 기준은 모두 완료됐다는 뜻이 아니다.
 
+이 저장소는 백엔드와 데이터 정합성 검증에 집중하며 별도의 프론트엔드를 만들지 않는다. 문제·설계 판단·검증 범위를 정리한 [포트폴리오 자료](docs/portfolio-case-study.md)를 제공한다.
+
 ## 기존 PostgreSQL 실험 실행
 
 Docker Compose와 Python 3이 필요하다. 다음 명령은 이 디렉터리에서 실행한다. 로컬 포트 18184–18188과 별도의 명명된 실험 볼륨을 사용한다.

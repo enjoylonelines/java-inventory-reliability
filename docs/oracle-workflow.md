@@ -14,7 +14,42 @@
 
 ## Oracle 준비와 실행
 
-1. 다른 애플리케이션과 분리된 Oracle 개발 DB 및 **새 빈 스키마**를 준비한다. `src/main/resources/oracle/schema.sql`을 그 계정에서 SQL*Plus 등으로 한 번 실행한다. Oracle DDL은 암묵적으로 커밋되므로 기존 스키마에서 실행하지 않는다. 이 초기 스키마에는 outbox 이력과 감사 테이블이 이미 포함돼 있다. `002_outbox_history.sql`, `003_action_audit.sql`은 해당 테이블이 없던 이전 개발 스키마를 위한 별도 변경이므로 새 스키마에 중복 적용하지 않는다. 기존 데이터 이전은 검증하지 않았다.
+### 재현용 컨테이너
+
+Docker Compose, JDK 21, Maven이 필요하다. 다음은 기존 DB가 아닌 `inventory-oracle-repro` 프로젝트와 별도 볼륨을 사용한다. 로컬 포트 11522를 기본으로 사용하며 필요하면 `ORACLE_PORT`로 빈 포트를 지정한다. Oracle 이미지 사용 조건과 로컬 자원을 먼저 확인한다. 비밀번호는 16~64자의 영문·숫자 개발 전용 값으로, 실제 자격 증명을 사용하지 않는다. 컨테이너 환경 변수는 해당 호스트의 Docker 관리자에게 보일 수 있다.
+
+```sh
+# 개발 전용 비밀번호를 입력하고 현재 셸에만 설정한다.
+read -rs ORACLE_PWD; export ORACLE_PWD
+docker compose -p inventory-oracle-repro -f compose.oracle.yaml up -d
+# oracle 컨테이너가 healthy가 될 때까지 기다린다.
+./scripts/prepare-oracle-schema.sh inventory_repro
+export ORACLE_TEST_URL="jdbc:oracle:thin:@//127.0.0.1:${ORACLE_PORT:-11522}/FREEPDB1"
+export ORACLE_TEST_USER=inventory_repro
+export ORACLE_TEST_PASSWORD="$ORACLE_PWD"
+ORACLE_INTEGRATION_TEST=true mvn -Dtest=OraclePostingIntegrationTest,OracleReportIntegrationTest,OracleSpringContextIntegrationTest,OracleSpringApiIntegrationTest test
+```
+
+`docker compose` 플러그인 대신 `docker-compose` 명령이 설치된 환경은 시작 명령을 그 이름으로 바꾼다. 초기화 스크립트는 지정된 Compose 프로젝트만 대상으로 하며 기존 계정이나 테이블스페이스가 있으면 교체하지 않고 실패한다. Oracle DDL은 암묵적 커밋이므로 중간 실패 시 일부 객체가 남을 수 있다. 원인을 확인하고 보존 여부를 결정해야 하며, 스크립트는 자동 삭제하지 않는다. 볼륨을 유지하면 다음 시작에도 DB가 남고 새 `ORACLE_PWD` 값만으로 기존 비밀번호가 바뀌지 않는다.
+
+전용 빈 계정이 필요한 실험은 다음처럼 각 계정을 **한 번만** 준비한다. 각 테스트는 실제 가상 행을 남기며, outbox·충돌·조회 비교 실험은 빈 전용 스키마에서만 실행된다. 이미 사용한 스키마를 자동으로 비우거나 다른 프로젝트의 데이터를 지우지 않는다.
+
+```sh
+./scripts/prepare-oracle-schema.sh inventory_outbox_test
+ORACLE_INTEGRATION_TEST=true ORACLE_OUTBOX_TEST_USER=inventory_outbox_test mvn -Dtest=OracleOutboxIntegrationTest test
+
+./scripts/prepare-oracle-schema.sh inventory_crash_test
+ORACLE_CRASH_EXPERIMENT=true ORACLE_CRASH_USER=inventory_crash_test mvn -Dtest=OracleWorkerCrashExperimentTest test
+
+./scripts/prepare-oracle-schema.sh inventory_report_test
+ORACLE_REPORT_EXPERIMENT=true ORACLE_REPORT_USER=inventory_report_test mvn -Dtest=OracleStockReportComparisonTest test
+```
+
+각 명령은 위의 `ORACLE_TEST_URL`과 `ORACLE_TEST_PASSWORD`를 사용한다. 충돌 실험은 자신이 시작한 자식 JVM을 강제 종료하며, 조회 실험은 전용 스키마의 데이터를 추가하고 인덱스를 생성한다. 원시 JSON은 `evidence/`에 남는다. 위 스키마는 이미 데이터가 있으면 다시 사용할 수 없으므로 반복 실험 시 별도의 새 개발 환경을 준비해야 한다.
+
+### 기존 Oracle 개발 DB를 직접 준비할 때
+
+1. 다른 애플리케이션과 분리된 Oracle 개발 DB 및 **새 빈 스키마**를 준비한다. `src/main/resources/oracle/schema.sql`을 그 계정에서 SQL*Plus 등으로 한 번 실행한다. Oracle DDL은 암묵적으로 커밋되므로 기존 스키마에서 실행하지 않는다. 이 초기 스키마에는 outbox 이력과 감사 테이블이 이미 포함돼 있다. `002_outbox_history.sql`, `003_action_audit.sql`은 해당 테이블이 없던 이전 개발 스키마를 위한 별도 변경이므로 새 스키마에 중복 적용하지 않는다. 기존 데이터 이전은 검증하지 않았다. `004_optional_stock_cover_index.sql`은 조회 실험에서 사용한 선택 후보이며 기본 스키마에 포함되지 않는다.
 2. `ORACLE_JDBC_URL`, `ORACLE_JDBC_USER`, `ORACLE_JDBC_PASSWORD`를 안전하게 설정하고 `oracle` Spring 프로파일을 사용한다. 자격 증명은 저장소나 URL에 넣지 않는다. 스키마 자동 초기화는 꺼져 있다.
 3. API는 기본적으로 꺼져 있다. 격리 환경에서만 `inventory.api.enabled=true`와 서로 다른 충분히 긴 `inventory.api.viewer-token`, `inventory.api.operator-token`을 제공한다. `/api/oracle/**`의 GET은 두 역할에, 쓰기는 담당자에게 허용한다. 성공한 업무 변경과 수동 재처리는 역할명으로 기록하지만, 거절된 요청과 실패한 업무 변경의 감사 이력은 구현하지 않았다. 이 정적 공유 토큰과 역할명 감사 기록은 개인 식별, 토큰 회전, TLS, 운영 권한 관리가 아니며 운영 보안으로 사용할 수 없다.
 4. outbox 작업자 역시 기본적으로 꺼져 있다. `inventory.oracle.outbox.enabled=true`와 HTTP loopback의 `/apply`를 가리키는 `inventory.oracle.outbox.mock-url`을 명시해야 한다. 네트워크 네임스페이스가 다른 컨테이너의 loopback은 서로 다르므로 모의 서비스를 같은 네임스페이스에서 실행해야 한다. 전달은 최소 한 번 시도되며 중복 방지는 모의 대상의 이벤트 ID 멱등 처리에 의존한다.

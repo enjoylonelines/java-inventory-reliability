@@ -1,0 +1,54 @@
+{
+  "conditions" : {
+    "recovery_interval" : "parent kill request to second worker completing SENT",
+    "logical_events_per_round" : 1,
+    "lease_seconds" : 5,
+    "rounds" : 3,
+    "receiver" : "in-memory HTTP receiver retained in parent process"
+  },
+  "limitations" : [ "small sample; not a latency distribution or production recovery SLO", "receiver and parent share one machine; mock is not an actual ERP", "restart is triggered by the test, not a supervisor", "time includes remaining lease and starting a new JVM", "deduplication depends on receiver event ID handling" ],
+  "timestamp_utc" : "2026-10-18T14:01:00.131271683Z",
+  "test_source_sha256" : "6ce7d485c5fe40ae8ccb68376e46bc1e15a5de7d182ebfb5a215431c0fc6d446",
+  "run_id" : "oracle-worker-crash-102ff297-9699-4487-892e-d6540238290d",
+  "environment" : {
+    "database" : "Oracle AI Database 26ai Free Release 23.26.3.0.0 - Develop, Learn, and Run for Free\nVersion 23.26.3.0.0",
+    "os" : "Linux",
+    "arch" : "aarch64",
+    "java" : "21.0.12.1"
+  },
+  "scope" : "local dedicated Oracle schema; synthetic shipment; child JVM terminated after loopback mock applied before response",
+  "rounds" : [ {
+    "ledger_quantity" : 7,
+    "recovery_ms" : 6606.504341,
+    "receivable" : "7.50",
+    "delivery_attempts" : 2,
+    "round" : 1,
+    "applied_count" : 1,
+    "event_id" : "d7af0d14-26c2-420d-a234-4b0ab96cfe69",
+    "state" : "SENT",
+    "remaining_stock" : 7,
+    "document_id" : "c3ca33a7-389d-4947-8953-c5a7f9f5f79a"
+  }, {
+    "ledger_quantity" : 7,
+    "recovery_ms" : 6546.65752,
+    "receivable" : "7.50",
+    "delivery_attempts" : 2,
+    "round" : 2,
+    "applied_count" : 1,
+    "event_id" : "4f9a6fe7-e3c2-4dd6-88aa-3d75afa40674",
+    "state" : "SENT",
+    "remaining_stock" : 7,
+    "document_id" : "6263fb77-3ffd-409f-8e19-d8b0dbccbe73"
+  }, {
+    "ledger_quantity" : 7,
+    "recovery_ms" : 6551.382419,
+    "receivable" : "7.50",
+    "delivery_attempts" : 2,
+    "round" : 3,
+    "applied_count" : 1,
+    "event_id" : "01ec4ccf-cc34-4024-89d0-d57b4d393f99",
+    "state" : "SENT",
+    "remaining_stock" : 7,
+    "document_id" : "6ffae494-2ee8-4aa4-a608-4042aee9a11e"
+  } ]
+}

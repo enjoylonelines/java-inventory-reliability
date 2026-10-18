@@ -70,3 +70,27 @@
 JDBC 왕복을 포함한 로컬 synthetic 결과다. 실행계획은 `EXPLAIN PLAN`의 추정값이며 실제 실행 커서나 기본 옵티마이저 선택을 확인한 것은 아니다. 캐시·다른 부하가 통제되지 않았고 다른 DB와의 비교도 아니다. [600개 표본과 환경·SQL 원시 결과](evidence/oracle-query-257de062-07d6-42f4-8d6f-494f043ed366.json).
 
 전체 writer 통합, tenant 격리, 실제 외부 ERP 연동, 완전한 회계 및 운영 보안·성능은 구현 또는 검증 범위에 없다.
+
+## 8. Oracle 작업자 강제 종료와 복구
+
+독립 JVM 작업자가 전표 outbox를 전송하고 HTTP 모의 수신자가 반영한 직후, 응답을 보내기 전에 해당 JVM을 강제 종료했다. 5초 lease가 만료된 뒤 별도 JVM을 시작해 같은 이벤트를 재전송했다. 빈 전용 스키마에서 3회 반복한 결과, 매회 전송 2회·모의 반영 1회·최종 `SENT`였다. 매회 출고 3개 후 현재고와 수불이 7개, 채권이 7.50이며 매출 반대 부호 분개가 일치했다. 종료 요청부터 새 작업자의 완료까지는 6,606ms, 6,547ms, 6,551ms였다. [원시 결과](evidence/oracle-worker-crash-102ff297-9699-4487-892e-d6540238290d.json), [실험 코드](src/test/java/com/inventory/oracle/OracleWorkerCrashExperimentTest.java).
+
+재시작은 실험이 직접 실행했고 외부 수신자는 상위 테스트 프로세스의 메모리 모의 HTTP 서버다. 남은 lease 대기와 새 JVM 시작이 시간에 포함된다. 3회 관찰은 복구 시간 분포나 운영 SLO가 아니다. 중복 방지는 수신자의 이벤트 ID 멱등 처리에 의존한다.
+
+초기 탐색 실행의 [원시 결과](evidence/oracle-worker-crash-192d532a-d445-4fa7-85ff-5f01a026f4ca.json)도 보존한다. 이 실행은 이후 수불·분개 검증을 추가하기 전이며 당시 테스트 소스 파일은 별도로 보존하지 않았으므로, 강화된 검증의 근거로 사용하지 않는다.
+
+출고 12개와 반품 11개 **선택된 저장 경계**에 각각 실패를 주입해 요청 키와 해당 전표·수불·분개·outbox가 롤백되는지, 동일 요청을 다시 처리할 수 있는지 확인했다. 모든 장애 지점이나 데이터 조합을 망라한 것은 아니다. [테스트 코드](src/test/java/com/inventory/oracle/OraclePostingIntegrationTest.java).
+
+## 9. 실제 Oracle 재고 보고서 SQL과 후보 인덱스
+
+`OracleReportMapper.stock`의 SQL을 그대로 사용하고 접근 경로 힌트는 주지 않았다. 전용 Oracle 스키마에 가상 수불 100,000행(100개 SKU × 1,000행)을 준비하고 특정 SKU 결과가 현재고 999·수불 999로 같은지 매 호출 확인했다. 기존 인덱스 상태에서 warm-up 30회와 300회 측정 후, `(warehouse_id, sku, quantity_delta)` 후보 인덱스를 추가하고 같은 방식으로 다시 측정했다.
+
+| 측정값 | 추가 전 | 후보 인덱스 추가 후 | 변화 |
+| --- | ---: | ---: | ---: |
+| p50 | 0.608ms | 0.393ms | 35.3% 감소 |
+| p95 | 0.840ms | 0.453ms | 46.1% 감소 |
+| 실제 실행계획에 기록된 마지막 1회 buffers | 58 | 20 | 38 감소 |
+
+Oracle의 실제 실행 커서에서 기존 경로는 수불 인덱스와 테이블을 함께 읽었고, 후보 경로는 수불 후보 인덱스만 읽었다. 이 수치는 선택된 로컬 fixture에서의 결과이며, 측정 arm은 순차 실행했고 캐시는 통제하지 않았다. DB 통계 수집과 JDBC·테스트 비용이 포함된다. 인덱스의 쓰기·저장 비용이나 운영 배포는 측정하지 않아 [후보 SQL](src/main/resources/oracle/004_optional_stock_cover_index.sql)은 선택 적용으로 남겨뒀다. [원시 표본·실제 실행계획](evidence/oracle-stock-report-8287c5c5-cbd6-491f-86b5-922bc6414d74.json).
+
+별도의 새 컨테이너와 같은 fixture로 재현한 두 번째 실험에서는 p95가 0.695ms → 0.428ms로 38.4% 감소했고, 마지막 실행 버퍼는 역시 58 → 20이었다. 두 결과를 합쳐 단일 운영 성능 수치로 일반화하지 않는다. [두 번째 실험 원시 결과](evidence/oracle-stock-report-cdfe006f-208d-41f7-a3bd-69955b32663e.json). 작업자 강제 종료도 이 재현 환경에서 별도로 3회 통과했다. [복구 재현 원시 결과](evidence/oracle-worker-crash-248a8bae-403a-407a-ad65-8a728d958063.json).

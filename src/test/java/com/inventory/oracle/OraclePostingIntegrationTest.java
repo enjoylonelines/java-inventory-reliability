@@ -252,6 +252,79 @@ class OraclePostingIntegrationTest {
         assertStockAndLedger(58);
     }
 
+    @Test
+    void shipmentRollsBackAndCanRetryAfterEachSelectedWriteBoundary() {
+        List<String> steps = List.of("insertRequest", "insertOrder", "insertShipment", "insertOrderLine",
+            "insertShipmentLine", "confirmShipment", "decrementStock", "insertMovement", "insertJournal",
+            "postShipment", "insertOutbox", "insertActionAudit");
+        for (int i = 0; i < steps.size(); i++) {
+            String step = steps.get(i), key = requestPrefix + "failure-" + step;
+            AtomicReference<String> order = new AtomicReference<>(), document = new AtomicReference<>();
+            OracleInventoryMapper failing = (OracleInventoryMapper) Proxy.newProxyInstance(
+                OracleInventoryMapper.class.getClassLoader(), new Class<?>[] {OracleInventoryMapper.class},
+                (proxy, method, args) -> {
+                    try {
+                        Object result = method.invoke(mapper, args);
+                        if (method.getName().equals("insertRequest")) document.set((String) args[3]);
+                        if (method.getName().equals("insertOrder")) order.set((String) args[0]);
+                        if (method.getName().equals(step)) throw new IllegalStateException("injected after " + step);
+                        return result;
+                    } catch (InvocationTargetException e) { throw e.getCause(); }
+                });
+            var failingService = new OraclePostingService(failing, transaction, new ObjectMapper());
+            assertThrows(IllegalStateException.class, () -> failingService.postShipment(key, shipment(1, "2.50")), step);
+            assertNotNull(document.get(), step);
+            assertEquals(0, count("SELECT count(*) FROM ir_request_keys WHERE request_key=?", key), step);
+            if (order.get() != null) {
+                assertEquals(0, count("SELECT count(*) FROM ir_orders WHERE id=?", order.get()), step);
+                assertEquals(0, count("SELECT count(*) FROM ir_order_lines WHERE order_id=?", order.get()), step);
+            }
+            for (String table : List.of("ir_shipments", "ir_shipment_lines", "ir_stock_movements", "ir_journal_entries", "ir_outbox", "ir_action_audit")) {
+                String column = table.equals("ir_shipments") ? "id" : table.equals("ir_shipment_lines") ? "shipment_id" : "document_id";
+                assertEquals(0, count("SELECT count(*) FROM " + table + " WHERE " + column + "=?", document.get()), step + ": " + table);
+            }
+            assertStockAndLedger(60 - i);
+            assertTrue(service.postShipment(key, shipment(1, "2.50")).created(), step);
+            assertStockAndLedger(59 - i);
+        }
+    }
+
+    @Test
+    void returnRollsBackAndCanRetryAfterEachSelectedWriteBoundary() {
+        var original = service.postShipment(requestPrefix + "return-source", shipment(20, "2.50"));
+        String line = jdbc.queryForObject("SELECT id FROM ir_shipment_lines WHERE shipment_id=?", String.class, original.documentId());
+        List<String> steps = List.of("insertRequest", "insertReturn", "reserveReturn", "insertReturnLine", "incrementStock",
+            "insertMovement", "insertJournal", "confirmReturn", "postReturn", "insertOutbox", "insertActionAudit");
+        for (int i = 0; i < steps.size(); i++) {
+            String step = steps.get(i), key = requestPrefix + "return-failure-" + step;
+            AtomicReference<String> document = new AtomicReference<>();
+            OracleInventoryMapper failing = (OracleInventoryMapper) Proxy.newProxyInstance(
+                OracleInventoryMapper.class.getClassLoader(), new Class<?>[] {OracleInventoryMapper.class},
+                (proxy, method, args) -> {
+                    try {
+                        Object result = method.invoke(mapper, args);
+                        if (method.getName().equals("insertRequest")) document.set((String) args[3]);
+                        if (method.getName().equals(step)) throw new IllegalStateException("injected after " + step);
+                        return result;
+                    } catch (InvocationTargetException e) { throw e.getCause(); }
+                });
+            var failingService = new OraclePostingService(failing, transaction, new ObjectMapper());
+            ReturnCommand command = new ReturnCommand(original.documentId(), List.of(new ReturnItem(line, 1)));
+            assertThrows(IllegalStateException.class, () -> failingService.postReturn(key, command), step);
+            assertNotNull(document.get(), step);
+            assertEquals(0, count("SELECT count(*) FROM ir_request_keys WHERE request_key=?", key), step);
+            assertEquals(0, count("SELECT count(*) FROM ir_returns WHERE id=?", document.get()), step);
+            assertEquals(0, count("SELECT count(*) FROM ir_return_lines WHERE return_id=?", document.get()), step);
+            for (String table : List.of("ir_stock_movements", "ir_journal_entries", "ir_outbox", "ir_action_audit")) {
+                assertEquals(0, count("SELECT count(*) FROM " + table + " WHERE document_id=?", document.get()), step + ": " + table);
+            }
+            assertMoney(Integer.toString(i), decimal("SELECT returned_quantity FROM ir_shipment_lines WHERE id=?", line));
+            assertStockAndLedger(40 + i);
+            assertTrue(service.postReturn(key, command).created(), step);
+            assertStockAndLedger(41 + i);
+        }
+    }
+
     private ShipmentCommand shipment(long quantity, String unitPrice) {
         return new ShipmentCommand(List.of(new ShipmentItem(warehouse, sku, quantity, new BigDecimal(unitPrice))));
     }

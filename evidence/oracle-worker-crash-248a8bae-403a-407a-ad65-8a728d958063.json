@@ -1,0 +1,54 @@
+{
+  "timestamp_utc" : "2026-10-18T14:03:59.944019164Z",
+  "test_source_sha256" : "6ce7d485c5fe40ae8ccb68376e46bc1e15a5de7d182ebfb5a215431c0fc6d446",
+  "run_id" : "oracle-worker-crash-248a8bae-403a-407a-ad65-8a728d958063",
+  "environment" : {
+    "arch" : "aarch64",
+    "java" : "21.0.12.1",
+    "database" : "Oracle AI Database 26ai Free Release 23.26.3.0.0 - Develop, Learn, and Run for Free\nVersion 23.26.3.0.0",
+    "os" : "Linux"
+  },
+  "scope" : "local dedicated Oracle schema; synthetic shipment; child JVM terminated after loopback mock applied before response",
+  "rounds" : [ {
+    "receivable" : "7.50",
+    "delivery_attempts" : 2,
+    "round" : 1,
+    "applied_count" : 1,
+    "event_id" : "f7ed06d3-6813-4ad7-a360-5d045b67de9d",
+    "state" : "SENT",
+    "remaining_stock" : 7,
+    "document_id" : "dd59b297-cc14-49cd-a447-b095f54e8c70",
+    "ledger_quantity" : 7,
+    "recovery_ms" : 6594.9878
+  }, {
+    "receivable" : "7.50",
+    "delivery_attempts" : 2,
+    "round" : 2,
+    "applied_count" : 1,
+    "event_id" : "722c2320-625f-4e31-8a5d-2309ea2fffb5",
+    "state" : "SENT",
+    "remaining_stock" : 7,
+    "document_id" : "bddd9fdb-1d91-4760-a444-a82fb69cea13",
+    "ledger_quantity" : 7,
+    "recovery_ms" : 6660.326095
+  }, {
+    "receivable" : "7.50",
+    "delivery_attempts" : 2,
+    "round" : 3,
+    "applied_count" : 1,
+    "event_id" : "1582daa7-178f-4627-aa9b-d1141ce99f53",
+    "state" : "SENT",
+    "remaining_stock" : 7,
+    "document_id" : "0f2e939a-feaa-4955-9295-cc1b728a197a",
+    "ledger_quantity" : 7,
+    "recovery_ms" : 6603.043445
+  } ],
+  "conditions" : {
+    "lease_seconds" : 5,
+    "rounds" : 3,
+    "receiver" : "in-memory HTTP receiver retained in parent process",
+    "recovery_interval" : "parent kill request to second worker completing SENT",
+    "logical_events_per_round" : 1
+  },
+  "limitations" : [ "small sample; not a latency distribution or production recovery SLO", "receiver and parent share one machine; mock is not an actual ERP", "restart is triggered by the test, not a supervisor", "time includes remaining lease and starting a new JVM", "deduplication depends on receiver event ID handling" ]
+}

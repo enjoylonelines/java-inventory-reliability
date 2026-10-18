@@ -1,0 +1,48 @@
+{
+  "run_id" : "oracle-worker-crash-192d532a-d445-4fa7-85ff-5f01a026f4ca",
+  "test_source_sha256" : "fdd01a0272190054e384ed08cb6497adc690563663e70b3538f2df52a0132de8",
+  "timestamp_utc" : "2026-10-18T13:59:52.469438038Z",
+  "limitations" : [ "small sample; not a latency distribution or production recovery SLO", "receiver and parent share one machine; mock is not an actual ERP", "restart is triggered by the test, not a supervisor", "time includes remaining lease and starting a new JVM", "deduplication depends on receiver event ID handling" ],
+  "conditions" : {
+    "lease_seconds" : 5,
+    "logical_events_per_round" : 1,
+    "recovery_interval" : "parent kill request to second worker completing SENT",
+    "receiver" : "in-memory HTTP receiver retained in parent process",
+    "rounds" : 3
+  },
+  "rounds" : [ {
+    "delivery_attempts" : 2,
+    "event_id" : "907d6017-7eb8-43c2-9de4-efb12827116f",
+    "document_id" : "6c5a74fa-912e-4f06-a867-3376f537c3b2",
+    "round" : 1,
+    "applied_count" : 1,
+    "recovery_ms" : 6569.496313,
+    "remaining_stock" : 7,
+    "state" : "SENT"
+  }, {
+    "delivery_attempts" : 2,
+    "event_id" : "362b46dc-8595-4e8e-ae96-8f130eaf50a7",
+    "document_id" : "e64736c5-187f-4516-a11f-22ddf6bab24d",
+    "round" : 2,
+    "applied_count" : 1,
+    "recovery_ms" : 6568.891452,
+    "remaining_stock" : 7,
+    "state" : "SENT"
+  }, {
+    "delivery_attempts" : 2,
+    "event_id" : "60be3f21-f247-4a0c-a0f0-4210a9696a29",
+    "document_id" : "72f250ee-ad4f-4cd4-a3f4-1030daf9a07c",
+    "round" : 3,
+    "applied_count" : 1,
+    "recovery_ms" : 6625.466137,
+    "remaining_stock" : 7,
+    "state" : "SENT"
+  } ],
+  "scope" : "local dedicated Oracle schema; synthetic shipment; child JVM terminated after loopback mock applied before response",
+  "environment" : {
+    "arch" : "aarch64",
+    "os" : "Linux",
+    "database" : "Oracle AI Database 26ai Free Release 23.26.3.0.0 - Develop, Learn, and Run for Free\nVersion 23.26.3.0.0",
+    "java" : "21.0.12.1"
+  }
+}
